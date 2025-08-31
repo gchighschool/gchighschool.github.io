@@ -4,19 +4,19 @@
             "id": "1",
             "title": "School Reopening Announcement",
             "date": "2025-08-30",
-            "body": "Ghonar Chala High School will reopen for the new academic session on September 1, 2025. All students are requested to attend the orientation program at 8 AM."
+            "body": "# School Reopening\nGhonar Chala High School will reopen for the new academic session on **September 1, 2025**. All students are requested to attend the orientation program at 8 AM.\n\n- **Venue**: School Auditorium\n- **Dress Code**: School Uniform"
         },
         {
             "id": "2",
             "title": "Annual Sports Day",
             "date": "2025-08-25",
-            "body": "The Annual Sports Day is scheduled for September 15, 2025, at the school ground. Students are encouraged to participate in various events."
+            "body": "# Annual Sports Day\nThe Annual Sports Day is scheduled for **September 15, 2025**, at the school ground. Students are encouraged to participate in various events.\n\n### Events\n- 100m Sprint\n- Relay Race\n- Long Jump"
         },
         {
             "id": "3",
             "title": "Admission Test Schedule",
             "date": "2025-08-20",
-            "body": "The admission test for the 2026 academic year will be held on December 10, 2025. Application forms are available at the school office."
+            "body": "# Admission Test\nThe admission test for the 2026 academic year will be held on **December 10, 2025**. Application forms are available at the school office.\n\n**Details**:\n- **Time**: 9 AM\n- **Location**: Main Building"
         }
     ]
 }

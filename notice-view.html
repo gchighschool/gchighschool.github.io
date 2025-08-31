@@ -21,6 +21,15 @@
             border-radius: 10px;
             border: 1px solid #ddd;
         }
+        /* Markdown content styling */
+        .notice-content h1 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .notice-content ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
     </style>
 </head>
 <body class="bg-light font-sans">
@@ -59,7 +68,7 @@
             <div id="noticeContent" class="notice-content">
                 <h3 id="noticeTitle" class="fw-semibold fs-4"></h3>
                 <p id="noticeDate" class="text-muted mb-4"></p>
-                <p id="noticeBody"></p>
+                <div id="noticeBody"></div>
             </div>
             <div class="text-center mt-4">
                 <a href="notices.html" class="btn btn-primary">Back to Notices</a>
@@ -80,26 +89,68 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <!-- jQuery (for simplicity in fetching JSON) -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!-- Marked.js for Markdown rendering -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/marked@4.3.0/lib/marked.min.js"></script> -->
+    
+  <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
     <script>
         $(document).ready(function() {
+            // Fallback notice data with Markdown
+            const fallbackNotices = [
+                {
+                    id: "1",
+                    title: "School Reopening Announcement",
+                    date: "2025-08-30",
+                    body: "# School Reopening\nGhonar Chala High School will reopen for the new academic session on **September 1, 2025**. All students are requested to attend the orientation program at 8 AM.\n\n- **Venue**: School Auditorium\n- **Dress Code**: School Uniform"
+                },
+                {
+                    id: "2",
+                    title: "Annual Sports Day",
+                    date: "2025-08-25",
+                    body: "# Annual Sports Day\nThe Annual Sports Day is scheduled for **September 15, 2025**, at the school ground. Students are encouraged to participate in various events.\n\n### Events\n- 100m Sprint\n- Relay Race\n- Long Jump"
+                },
+                {
+                    id: "3",
+                    title: "Admission Test Schedule",
+                    date: "2025-08-20",
+                    body: "# Admission Test\nThe admission test for the 2026 academic year will be held on **December 10, 2025**. Application forms are available at the school office.\n\n**Details**:\n- **Time**: 9 AM\n- **Location**: Main Building"
+                }
+            ];
+
             // Get notice ID from URL query parameter
             const urlParams = new URLSearchParams(window.location.search);
             const noticeId = urlParams.get('id');
 
             if (noticeId) {
-                // Fetch notices from JSON file
+                // Try to fetch notices from JSON file
                 $.getJSON('./notices.json', function(data) {
-                    // Find the notice with matching ID
                     const notice = data.notices.find(n => n.id === noticeId);
                     if (notice) {
                         $('#noticeTitle').text(notice.title);
                         $('#noticeDate').text('Published: ' + notice.date);
-                        $('#noticeBody').text(notice.body);
+                        $('#noticeBody').html(marked.parse(notice.body));
+                    } else {
+                        // Fallback to sample data
+                        const fallbackNotice = fallbackNotices.find(n => n.id === noticeId);
+                        if (fallbackNotice) {
+                            $('#noticeTitle').text(fallbackNotice.title);
+                            $('#noticeDate').text('Published: ' + fallbackNotice.date);
+                            $('#noticeBody').html(marked.parse(fallbackNotice.body));
+                        } else {
+                            $('#noticeContent').html('<p class="text-center text-danger">Notice not found.</p>');
+                        }
+                    }
+                }).fail(function() {
+                    // Fallback to sample data on error
+                    const fallbackNotice = fallbackNotices.find(n => n.id === noticeId);
+                    if (fallbackNotice) {
+                        $('#noticeTitle').text(fallbackNotice.title);
+                        $('#noticeDate').text('Published: ' + fallbackNotice.date);
+                        $('#noticeBody').html(marked.parse(fallbackNotice.body));
                     } else {
                         $('#noticeContent').html('<p class="text-center text-danger">Notice not found.</p>');
                     }
-                }).fail(function() {
-                    $('#noticeContent').html('<p class="text-center text-danger">Failed to load notice. Please try again later.</p>');
+                    console.warn('Failed to load notices.json. Using fallback data.');
                 });
             } else {
                 $('#noticeContent').html('<p class="text-center text-danger">No notice selected.</p>');
