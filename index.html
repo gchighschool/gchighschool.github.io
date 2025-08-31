@@ -29,6 +29,13 @@
             transform: translateY(-5px);
             box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
         }
+        /* Map styling */
+        .map-iframe {
+            width: 100%;
+            height: 300px;
+            border: 0;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body class="bg-light font-sans">
@@ -48,11 +55,12 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="admission.html">Admission</a></li>
+                            <li class="nav-item"><a class="nav-link" href="notices.html">Notices</a></li>
                             <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                             <li class="nav-item"><a class="nav-link" href="#leadership">Leadership</a></li>
                             <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                            <li class="nav-item"><a class="nav-link" href="admission.html">Admission</a></li>
-                        </ul>
+                               </ul>
                     </div>
                 </div>
             </nav>
@@ -136,11 +144,30 @@
     <section id="contact" class="py-5">
         <div class="container">
             <h2 class="text-center fw-bold mb-4 fs-2">Contact Us</h2>
-            <p class="text-center text-muted fs-5">
-                Address: Ghonar Chala Bazar, Kachua, Sakhipur, Tangail-1951<br>
-                Phone: 01309-114612<br>
-                Facebook: <a href="https://facebook.com/ghonarchalahighschoolofficial/" class="text-primary text-decoration-underline">Ghonar Chala High School Official</a>
-            </p>
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                <!-- Contact Details -->
+                <div class="col">
+                    <div class="card h-100 text-center shadow-sm">
+                        <div class="card-body">
+                            <h3 class="card-title fw-semibold fs-4">Get in Touch</h3>
+                            <p class="text-muted fs-5">
+                                Address: Ghonar Chala Bazar, Kachua, Sakhipur, Tangail-1951<br>
+                                Phone: 01309-114612<br>
+                                Facebook: <a href="https://facebook.com/ghonarchalahighschoolofficial/" class="text-primary text-decoration-underline">Ghonar Chala High School Official</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Google Map -->
+                <div class="col">
+                    <div class="card h-100 text-center shadow-sm">
+                        <div class="card-body">
+                            <h3 class="card-title fw-semibold fs-4">Our Location</h3>
+                            <iframe class="map-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3634.3682702282426!2d90.19604380955415!3d24.368489078163012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x375611bb216872b7%3A0x4fb1b2e9e3c037ab!2sGhonar%20Chala%20High%20School!5e0!3m2!1sen!2sbd!4v1756655525553!5m2!1sen!2sbd"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+               </div>
         </div>
     </section>
 
@@ -149,6 +176,7 @@
         <div class="container text-center">
             <p>&copy; 2025 Ghonar Chala High School. All rights reserved.</p>
             <p>Designed with ❤️ for education</p>
+            <p>Website enhanced by Grok, created by xAI</p>
         </div>
     </footer>
 

@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admissions - Ghonar Chala High School</title>
+    <title>Notice Details - Ghonar Chala High School</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
-        /* Custom CSS for banner */
-        .admission-banner img {
-            height: 400px;
-            object-fit: cover;
-            width: 100%;
-        }
         /* Ensure navbar collapse works smoothly */
         .navbar-nav .nav-link {
             color: white !important;
         }
         .navbar-nav .nav-link:hover {
             text-decoration: underline;
+        }
+        /* Notice content styling */
+        .notice-content {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
         }
     </style>
 </head>
@@ -39,46 +40,30 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item"><a class="nav-link" href="index.html#home">Home</a></li>
-                            <li class="nav-item"><a class="nav-link active" href="admission.html">Admission</a></li>
+                            <li class="nav-item"><a class="nav-link" href="admission.html">Admission</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="notices.html">Notices</a></li>
                             <li class="nav-item"><a class="nav-link" href="index.html#about">About</a></li>
                             <li class="nav-item"><a class="nav-link" href="index.html#leadership">Leadership</a></li>
                             <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
-                            </ul>
+                        </ul>
                     </div>
                 </div>
             </nav>
         </div>
     </header>
 
-    <!-- Admission Banner -->
-    <section class="admission-banner">
-        <img src="./images/admission-25.jpg" alt="Admission Banner" class="d-block w-100">
-    </section>
-
-    <!-- Admission Content -->
-    <section id="admission" class="py-5">
+    <!-- Notice View Section -->
+    <section id="notice-view" class="py-5">
         <div class="container">
-            <h2 class="text-center fw-bold mb-4 fs-2">Admissions</h2>
-            <p class="text-muted fs-5">
-                Ghonar Chala High School welcomes applications from students seeking quality education in a nurturing environment. 
-                Our admission process is designed to be transparent and accessible, ensuring equal opportunities for all applicants. 
-                We offer programs in Science, Business Studies, and Humanities, catering to diverse academic interests.
-            </p>
-            <h3 class="fw-semibold mt-5 mb-3 fs-4">Admission Process</h3>
-            <ul class="text-muted fs-5 list-group list-group-flush">
-                <li class="list-group-item">Applications are accepted annually, typically in December, for the upcoming academic year.</li>
-                <li class="list-group-item">Prospective students must submit an application form, available at the school office or through our website (when available).</li>
-                <li class="list-group-item">Eligibility is based on prior academic performance and an entrance test for certain grades.</li>
-                <li class="list-group-item">Selected candidates will be notified, and parents/guardians must complete the enrollment process with required documents.</li>
-            </ul>
-            <h3 class="fw-semibold mt-5 mb-3 fs-4">How to Apply</h3>
-            <p class="text-muted fs-5">
-                To apply, visit our school office at Ghonar Chala Bazar, Kachua, Sakhipur, Tangail-1951, or contact us at 01309-114612 for further details. 
-                Stay updated on admission deadlines through our official Facebook page.
-            </p>
-            <p class="text-center mt-5">
-                <a href="https://facebook.com/ghonarchalahighschoolofficial/" class="btn btn-primary">Visit Our Facebook Page</a>
-            </p>
+            <h2 class="text-center fw-bold mb-4 fs-2">Notice Details</h2>
+            <div id="noticeContent" class="notice-content">
+                <h3 id="noticeTitle" class="fw-semibold fs-4"></h3>
+                <p id="noticeDate" class="text-muted mb-4"></p>
+                <p id="noticeBody"></p>
+            </div>
+            <div class="text-center mt-4">
+                <a href="notices.html" class="btn btn-primary">Back to Notices</a>
+            </div>
         </div>
     </section>
 
@@ -93,5 +78,33 @@
 
     <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- jQuery (for simplicity in fetching JSON) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            // Get notice ID from URL query parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const noticeId = urlParams.get('id');
+
+            if (noticeId) {
+                // Fetch notices from JSON file
+                $.getJSON('./notices.json', function(data) {
+                    // Find the notice with matching ID
+                    const notice = data.notices.find(n => n.id === noticeId);
+                    if (notice) {
+                        $('#noticeTitle').text(notice.title);
+                        $('#noticeDate').text('Published: ' + notice.date);
+                        $('#noticeBody').text(notice.body);
+                    } else {
+                        $('#noticeContent').html('<p class="text-center text-danger">Notice not found.</p>');
+                    }
+                }).fail(function() {
+                    $('#noticeContent').html('<p class="text-center text-danger">Failed to load notice. Please try again later.</p>');
+                });
+            } else {
+                $('#noticeContent').html('<p class="text-center text-danger">No notice selected.</p>');
+            }
+        });
+    </script>
 </body>
 </html>
