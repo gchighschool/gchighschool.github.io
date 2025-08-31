@@ -1,189 +1,158 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ghonar Chala High School — Coming Soon</title>
-  <meta name="description" content="Official website of Ghonar Chala High School. A simple coming soon page with school details and contact information." />
-  <meta property="og:title" content="Ghonar Chala High School — Coming Soon" />
-  <meta property="og:description" content="Our new website is on the way. Stay tuned!" />
-  <meta name="theme-color" content="#0ea5e9" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #0f172a; /* slate-900 */
-      --fg: #e2e8f0; /* slate-200 */
-      --muted: #94a3b8; /* slate-400 */
-      --brand: #0ea5e9; /* sky-500 */
-      --brand-2: #22d3ee; /* cyan-400 */
-      --card: #111827ee; /* gray-900 */
-    }
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body {
-      margin: 0;
-      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji','Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif;
-      color: var(--fg);
-      background: radial-gradient(1200px 800px at 85% -10%, rgba(14,165,233,0.25), transparent 60%),
-                  radial-gradient(900px 700px at -10% 20%, rgba(34,211,238,0.20), transparent 60%),
-                  linear-gradient(180deg, #030712, #0b1220 35%, #0b1220 100%);
-    }
-    a { color: inherit; text-decoration: none; }
-
-    /* Header */
-    .site-header {
-      position: sticky; top: 0; z-index: 20;
-      backdrop-filter: saturate(140%) blur(10px);
-      background: rgba(3, 7, 18, 0.6);
-      border-bottom: 1px solid rgba(148,163,184,0.15);
-    }
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
-    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: .9rem 0; }
-    .brand { display:flex; align-items:center; gap:.75rem; }
-    .logo {
-      width: 42px; height: 42px; border-radius: 12px;
-      background: linear-gradient(135deg, var(--brand), var(--brand-2));
-      display:flex; align-items:center; justify-content:center;
-      font-weight: 800; color: #0b1220; letter-spacing: .5px;
-      box-shadow: 0 10px 20px rgba(14,165,233,.25), inset 0 0 0 1px rgba(255,255,255,.45);
-    }
-    .title { font-weight: 800; line-height: 1; font-size: 1.05rem; }
-    .subtitle { font-weight: 600; font-size: .8rem; color: var(--muted); margin-top: .15rem; }
-    .nav { display:flex; gap: 1rem; font-weight: 600; font-size: .92rem; color: var(--muted); }
-
-    /* Main */
-    main { display:grid; place-items:center; min-height: calc(100dvh - 150px); padding: 2rem 0 3rem; }
-    .hero { text-align: center; }
-    .badge { display:inline-flex; align-items:center; gap:.5rem; padding:.35rem .6rem; border-radius:999px; background:rgba(14,165,233,.15); color:#7dd3fc; font-weight:700; font-size:.8rem; letter-spacing:.3px; text-transform:uppercase; }
-    .hero h1 { font-size: clamp(2rem, 4vw + .5rem, 3rem); line-height: 1.1; margin: .9rem 0 .6rem; }
-    .hero p { max-width: 62ch; margin: 0 auto; color: var(--muted); font-size: 1rem; }
-
-    /* Card */
-    .card {
-      margin: 2rem auto 0; max-width: 860px; background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(148,163,184,.15); border-radius: 18px; overflow: hidden;
-      box-shadow: 0 20px 60px rgba(2,6,23,.5);
-    }
-    .card .row { display:grid; grid-template-columns: 1fr; }
-    .card .col { padding: 1.1rem; }
-    .card h3 { margin: 0 0 .25rem; font-size: 1rem; color: #cbd5e1; letter-spacing: .2px; }
-    .meta { color: var(--muted); font-size: .95rem; }
-
-    @media (min-width: 700px) {
-      .card .row { grid-template-columns: 1.2fr 1fr; }
-      .col.border { border-left: 1px dashed rgba(148,163,184,.2); }
-    }
-
-    .divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(148,163,184,.3), transparent); margin: 1.25rem 0; }
-
-    /* Footer */
-    footer { border-top: 1px solid rgba(148,163,184,.15); padding: 1.1rem 0 2rem; color: var(--muted); }
-    .foot-grid { display:grid; grid-template-columns: 1fr; gap: 1rem; align-items:center; }
-    .foot-grid small { color: var(--muted); }
-    .social { display:flex; gap:.75rem; justify-content:flex-end; }
-    .chip { padding:.35rem .6rem; border-radius:999px; background: rgba(148,163,184,.15); font-weight:600; font-size:.82rem; color:#cbd5e1; }
-
-    /* Simple email capture (non-functional) */
-    .subscribe { display:flex; gap:.5rem; margin-top: 1rem; justify-content:center; }
-    .subscribe input { width: min(480px, 70vw); padding: .8rem 1rem; border-radius: 12px; border: 1px solid rgba(148,163,184,.35); background: rgba(2,6,23,.6); color: var(--fg); font-size: 1rem; }
-    .subscribe button { padding: .8rem 1rem; border-radius: 12px; border: 0; font-weight: 800; cursor:pointer; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color:#0b1220; box-shadow: 0 10px 20px rgba(14,165,233,.25); }
-    .subscribe small { display:block; color: var(--muted); margin-top:.5rem; }
-
-    /* Accessibility focus */
-    .subscribe input:focus, .subscribe button:focus, a:focus { outline: 2px solid var(--brand-2); outline-offset: 2px; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghonar Chala High School</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        /* Minimal custom CSS for slider adjustments */
+        .carousel-item img {
+            height: 400px;
+            object-fit: cover;
+        }
+        /* Ensure navbar collapse works smoothly */
+        .navbar-nav .nav-link {
+            color: white !important;
+        }
+        .navbar-nav .nav-link:hover {
+            text-decoration: underline;
+        }
+        /* Enhanced card styling */
+        .leadership-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid #007bff;
+            border-radius: 10px;
+        }
+        .leadership-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+        }
+    </style>
 </head>
-<body>
-  <!-- Header -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <div class="logo" aria-hidden="true">GC</div>
-        <div>
-          <div class="title">Ghonar Chala High School</div>
-          <div class="subtitle">ঘোনার চালা উচ্চ বিদ্যালয়</div>
+<body class="bg-light font-sans">
+    <!-- Header -->
+    <header class="bg-primary text-white py-3">
+        <div class="container">
+            <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+                <div class="container-fluid">
+                    <div>
+                        <h1 class="navbar-brand mb-0 fs-3">ঘোনার চালা উচ্চ বিদ্যালয়</h1>
+                        <p class="text-light mb-0 fs-5">Ghonar Chala High School</p>
+                        <p class="text-light mb-0 fs-6">EIIN: 114612</p>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#leadership">Leadership</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                            <li class="nav-item"><a class="nav-link" href="admission.html">Admission</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
         </div>
-      </div>
-      <nav class="nav" aria-label="Primary">
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+    </header>
 
-  <!-- Main -->
-  <main>
-    <section class="hero container" id="home">
-      <span class="badge" aria-label="Status">Website Update</span>
-      <h1>Our new website is <span style="background:linear-gradient(135deg,var(--brand),var(--brand-2)); -webkit-background-clip:text; background-clip:text; color:transparent;">coming soon</span>.</h1>
-      <p>We are preparing a fresh digital home for students, teachers, guardians, and our community. Please check back soon. ধন্যবাদ!</p>
-
-      <form class="subscribe" aria-label="Notify me (placeholder, not yet functional)" onsubmit="event.preventDefault(); alert('Thanks! We\'ll update this soon.');">
-        <input type="email" placeholder="Enter your email to get notified" aria-label="Email address" />
-        <button type="submit" aria-label="Submit email">Notify Me</button>
-      </form>
-
-      <div class="card" id="about" role="region" aria-label="School information">
-        <div class="row">
-          <div class="col">
-            <h3>School Details</h3>
-            <div class="meta">
-              <div><strong>Name:</strong> Ghonar Chala High School</div>
-              <div><strong>Bangla:</strong> ঘোনার চালা উচ্চ বিদ্যালয়</div>
-              <div><strong>EIIN:</strong> 114612</div>
-              <div><strong>Type:</strong> Secondary School</div>
-              <div><strong>Location:</strong> Ghonar Chala Bazar, Kachua, Sakhipur, Tangail-1951</div>
+    <!-- Photo Slider -->
+    <section id="carouselSection" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item">
+                <img src="./images/slider-1.jpg" class="d-block w-100" alt="School Events">
             </div>
-
-            <div class="divider"></div>
-
-            <h3>At a Glance</h3>
-            <div class="meta">
-              <ul style="margin:.2rem 0 0 1.1rem; padding:0; line-height:1.8;">
-                <li>Student-centered learning and community values.</li>
-                <li>Committed to academic excellence and character building.</li>
-                <li>Co-curricular focus on science, culture, and sports.</li>
-              </ul>
+            <div class="carousel-item active">
+                <img src="./images/slider-2.jpg" class="d-block w-100" alt="School Campus">
             </div>
-          </div>
-
-          <div class="col border" id="contact">
-            <h3>Contact</h3>
-            <div class="meta">
-              <div><strong>Office:</strong> Head Teacher's Office</div>
-              <div><strong>Hours:</strong> Sun–Thu, 9:00 AM – 3:30 PM</div>
-              <div><strong>Cell:</strong> 01309-114612</div>
-              <div><strong>Address:</strong> Ghonar Chala Bazar, Kachua, Sakhipur, Tangail-1951</div>
-              <div style="margin-top:.6rem;">
-                <span class="chip" title="Education Institute Identification Number">EIIN: 114612</span>
-              </div>
-              <div style="margin-top:1rem;">
-                <small>For urgent queries, please visit the school office during working hours.</small>
-              </div>
+            <div class="carousel-item">
+                <img src="./images/slider-3.jpg" class="d-block w-100" alt="Students Learning">
             </div>
-          </div>
+            <div class="carousel-item">
+                <img src="./images/slider-4.jpg" class="d-block w-100" alt="School Events">
+            </div>
         </div>
-      </div>
-
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselSection" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselSection" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </section>
-  </main>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container foot-grid">
-      <small>© <span id="year"></span> Ghonar Chala High School — All rights reserved.</small>
-      <div class="social">
-        <span class="chip"><a href="facebook.com/ghonarchalahighschoolofficial/">Facebook Page</a></span>
-        <span class="chip">Notices</span>
-      </div>
-    </div>
-  </footer>
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-4 fs-2">About Our School</h2>
+            <p class="text-muted fs-5">
+                Ghonar Chala High School, established on January 10, 1985, is a distinguished non-government secondary school in Sakhipur, Tangail, Bangladesh. 
+                Located at Ghonar Chala Bazar, Kachua, the school operates under the Dhaka Education Board with an EIIN of 114612. Officially recognized on January 1, 1988, 
+                it offers education in Science, Business Studies, and Humanities. As part of the Monthly Pay Order (MPO) system, it receives government funding for teacher salaries. 
+                Situated in a rural plain land area, the school is committed to fostering academic excellence and moral values, supported by dedicated faculty and modern facilities.
+            </p>
+        </div>
+    </section>
 
-  <script>
-    // Set current year
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+    <!-- Leadership Section -->
+    <section id="leadership" class="bg-secondary bg-opacity-10 py-5">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-4 fs-2">Our Leadership</h2>
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                <!-- Headmaster -->
+                <div class="col">
+                    <div class="card h-100 text-center shadow-sm leadership-card">
+                        <div class="card-body">
+                            <h3 class="card-title fw-semibold fs-4">Md. Nazrul Islam</h3>
+                            <p class="text-muted">Headmaster</p>
+                            <p class="card-text">
+                                With over 20 years of experience in education, Md. Nazrul Islam leads our school with a vision of academic excellence 
+                                and holistic development.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- President of Managing Committee -->
+                <div class="col">
+                    <div class="card h-100 text-center shadow-sm leadership-card">
+                        <div class="card-body">
+                            <h3 class="card-title fw-semibold fs-4">Alhaj Amzad Hossen Master</h3>
+                            <p class="text-muted">President, Managing Committee</p>
+                            <p class="card-text">
+                                Former Assistant Head Teacher of Ghonar Chala High School and Ex-Chairman of Kalia Union Parishad.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-4 fs-2">Contact Us</h2>
+            <p class="text-center text-muted fs-5">
+                Address: Ghonar Chala Bazar, Kachua, Sakhipur, Tangail-1951<br>
+                Phone: 01309-114612<br>
+                Facebook: <a href="https://facebook.com/ghonarchalahighschoolofficial/" class="text-primary text-decoration-underline">Ghonar Chala High School Official</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-3">
+        <div class="container text-center">
+            <p>&copy; 2025 Ghonar Chala High School. All rights reserved.</p>
+            <p>Designed with ❤️ for education</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
