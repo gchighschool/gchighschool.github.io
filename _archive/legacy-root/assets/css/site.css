@@ -1,0 +1,399 @@
+/* ==========================================================================
+   ঘোনার চালা উচ্চ বিদ্যালয় — site.css
+   Loaded AFTER Bootstrap 5.3.3. The only stylesheet in the project.
+   ========================================================================== */
+
+/* --------------------------------------------------------------- 1. Tokens */
+:root {
+  --gc-green-900: #00352a;
+  --gc-green-800: #004d38;
+  --gc-green-700: #006a4e;   /* flag green — primary */
+  --gc-green-600: #00875f;
+  --gc-green-100: #d7ece4;
+  --gc-green-50:  #eef7f3;
+  --gc-red:       #f42a41;   /* flag red — accents only */
+  --gc-gold:      #c9a227;
+  --gc-ink:       #12211c;
+  --gc-muted:     #5b6b64;
+  --gc-line:      #dfe7e3;
+  --gc-surface:   #ffffff;
+  --gc-canvas:    #f6f8f7;
+
+  --gc-radius:    .625rem;
+  --gc-radius-sm: .375rem;
+  --gc-shadow:    0 1px 2px rgba(0,53,42,.06), 0 4px 16px rgba(0,53,42,.06);
+  --gc-shadow-lg: 0 8px 32px rgba(0,53,42,.12);
+
+  --gc-header-h:  auto;
+}
+
+/* ------------------------------------------- 2. Bootstrap 5.3 re-theming */
+/* Utility/link layer reads --bs-primary-rgb ... */
+:root {
+  --bs-primary: #006a4e;
+  --bs-primary-rgb: 0, 106, 78;
+  --bs-link-color-rgb: 0, 106, 78;
+  --bs-link-hover-color-rgb: 0, 53, 42;
+  --bs-focus-ring-color: rgba(0, 106, 78, .35);
+  --bs-body-color: var(--gc-ink);
+  --bs-body-bg: var(--gc-canvas);
+  --bs-border-color: var(--gc-line);
+}
+/* ...but .btn-primary bakes its own --bs-btn-* values, so retheme them too. */
+.btn-primary {
+  --bs-btn-bg: var(--gc-green-700);
+  --bs-btn-border-color: var(--gc-green-700);
+  --bs-btn-hover-bg: var(--gc-green-800);
+  --bs-btn-hover-border-color: var(--gc-green-800);
+  --bs-btn-active-bg: var(--gc-green-900);
+  --bs-btn-active-border-color: var(--gc-green-900);
+  --bs-btn-disabled-bg: var(--gc-green-700);
+  --bs-btn-disabled-border-color: var(--gc-green-700);
+  --bs-btn-focus-shadow-rgb: 0, 106, 78;
+}
+.btn-outline-primary {
+  --bs-btn-color: var(--gc-green-700);
+  --bs-btn-border-color: var(--gc-green-700);
+  --bs-btn-hover-bg: var(--gc-green-700);
+  --bs-btn-hover-border-color: var(--gc-green-700);
+  --bs-btn-active-bg: var(--gc-green-800);
+  --bs-btn-active-border-color: var(--gc-green-800);
+  --bs-btn-focus-shadow-rgb: 0, 106, 78;
+}
+.btn-gold {
+  --bs-btn-color: var(--gc-green-900);
+  --bs-btn-bg: var(--gc-gold);
+  --bs-btn-border-color: var(--gc-gold);
+  --bs-btn-hover-color: var(--gc-green-900);
+  --bs-btn-hover-bg: #d8b23a;
+  --bs-btn-hover-border-color: #d8b23a;
+  --bs-btn-focus-shadow-rgb: 201, 162, 39;
+}
+.table { --bs-table-border-color: var(--gc-line); }
+
+/* ------------------------------------------------------- 3. Base + typography */
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+}
+
+body {
+  /* One stack for both scripts: browsers fall back per glyph, so Latin resolves
+     to Inter and Bangla — absent from Inter — falls through to Hind Siliguri.
+     Do NOT add a :lang(bn) override: <html lang="bn"> would match the whole
+     document and push Latin text onto Hind Siliguri's weaker Latin glyphs. */
+  font-family: 'Inter', 'Hind Siliguri', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  background: var(--gc-canvas);
+  color: var(--gc-ink);
+  line-height: 1.75;
+}
+
+h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.45; color: var(--gc-green-900); }
+
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Visible focus everywhere — keyboard users must never lose their place. */
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, [tabindex]:focus-visible {
+  outline: 3px solid var(--gc-gold);
+  outline-offset: 2px;
+  border-radius: var(--gc-radius-sm);
+}
+
+.skip-link {
+  position: absolute; left: -9999px; top: 0; z-index: 2000;
+  background: var(--gc-green-900); color: #fff;
+  padding: .75rem 1.25rem; border-radius: 0 0 var(--gc-radius) 0;
+}
+.skip-link:focus { left: 0; }
+
+/* ------------------------------------------------------------ 4. Top utility bar */
+.gc-topbar {
+  background: var(--gc-green-900);
+  color: #cfe3db;
+  font-size: .8125rem;
+  padding: .375rem 0;
+}
+.gc-topbar a { color: #cfe3db; }
+.gc-topbar a:hover { color: #fff; }
+.gc-topbar .gc-topbar-sep { opacity: .4; }
+
+/* --------------------------------------------------------------- 5. Header band */
+.gc-header {
+  background: linear-gradient(100deg, var(--gc-green-800) 0%, var(--gc-green-700) 55%, var(--gc-green-600) 100%);
+  color: #fff;
+  padding: 1.125rem 0;
+  position: relative;
+}
+/* Thin flag-red keyline under the band. */
+.gc-header::after {
+  content: ""; position: absolute; inset: auto 0 0 0; height: 3px;
+  background: linear-gradient(90deg, var(--gc-red) 0 33%, var(--gc-gold) 33% 66%, var(--gc-green-600) 66% 100%);
+}
+.gc-brand { display: flex; align-items: center; gap: 1rem; text-decoration: none; color: #fff; }
+.gc-brand:hover { text-decoration: none; color: #fff; }
+.gc-brand-logo { width: 62px; height: 62px; flex: 0 0 62px; }
+.gc-brand-name-bn { font-size: clamp(1.25rem, 3.6vw, 1.75rem); font-weight: 700; color: #fff; margin: 0; line-height: 1.3; }
+.gc-brand-name-en { font-size: .9375rem; color: #d7ece4; margin: 0; letter-spacing: .01em; }
+.gc-brand-meta { font-size: .8125rem; color: #bcd9ce; margin: 0; }
+
+.gc-eiin {
+  display: inline-flex; align-items: center; gap: .4rem;
+  background: rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.22);
+  border-radius: 999px;
+  padding: .3rem .85rem;
+  font-size: .875rem; font-weight: 600; color: #fff;
+  white-space: nowrap;
+}
+
+/* -------------------------------------------------------------------- 6. Navbar */
+.gc-nav { background: var(--gc-green-900); }
+.gc-nav .navbar-nav .nav-link {
+  color: #dbeae4; font-weight: 500; font-size: .9688rem;
+  padding: .75rem 1rem; border-radius: var(--gc-radius-sm);
+}
+.gc-nav .navbar-nav .nav-link:hover,
+.gc-nav .navbar-nav .nav-link:focus { color: #fff; background: rgba(255,255,255,.09); text-decoration: none; }
+/* Active nav is driven purely by body[data-page] — no JS, no flash.
+   site.js additionally sets aria-current for screen readers. */
+body[data-page="home"]        .gc-nav [data-nav="home"],
+body[data-page="about"]       .gc-nav [data-nav="institution"],
+body[data-page="teachers"]    .gc-nav [data-nav="institution"],
+body[data-page="committee"]   .gc-nav [data-nav="institution"],
+body[data-page="academics"]   .gc-nav [data-nav="academics"],
+body[data-page="admission"]   .gc-nav [data-nav="admission"],
+body[data-page="notices"]     .gc-nav [data-nav="notices"],
+body[data-page="notice-view"] .gc-nav [data-nav="notices"],
+body[data-page="gallery"]     .gc-nav [data-nav="gallery"],
+body[data-page="contact"]     .gc-nav [data-nav="contact"] {
+  color: #fff;
+  background: var(--gc-green-700);
+  box-shadow: inset 0 -3px 0 var(--gc-red);
+  font-weight: 600;
+}
+.gc-nav .dropdown-menu {
+  border: 1px solid var(--gc-line); border-radius: var(--gc-radius);
+  box-shadow: var(--gc-shadow-lg); padding: .375rem;
+}
+.gc-nav .dropdown-item { border-radius: var(--gc-radius-sm); padding: .5rem .75rem; }
+.gc-nav .dropdown-item:active { background: var(--gc-green-700); }
+.gc-nav .navbar-toggler { border-color: rgba(255,255,255,.3); }
+
+/* ---------------------------------------------------------------- 7. Breadcrumb */
+.gc-breadcrumb-bar { background: var(--gc-green-50); border-bottom: 1px solid var(--gc-line); }
+.gc-breadcrumb-bar .breadcrumb { margin: 0; padding: .6rem 0; font-size: .875rem; }
+.gc-breadcrumb-bar .breadcrumb-item + .breadcrumb-item::before { content: "›"; color: var(--gc-muted); }
+
+/* ------------------------------------------------------------ 8. Section headings */
+.gc-section { padding: 3rem 0; }
+.gc-section--tint { background: var(--gc-green-50); }
+.gc-section-title { position: relative; margin-bottom: 1.75rem; }
+.gc-section-title h2 { font-size: clamp(1.35rem, 3vw, 1.75rem); margin: 0 0 .5rem; }
+.gc-section-title p { color: var(--gc-muted); margin: 0; font-size: .9375rem; }
+.gc-section-title::after {
+  content: ""; display: block; width: 58px; height: 4px; margin-top: .75rem;
+  background: linear-gradient(90deg, var(--gc-green-700) 0 60%, var(--gc-gold) 60% 100%);
+  border-radius: 2px;
+}
+.gc-section-title.text-center::after { margin-left: auto; margin-right: auto; }
+
+/* ------------------------------------------------------------------- 9. Cards */
+.gc-card {
+  background: var(--gc-surface);
+  border: 1px solid var(--gc-line);
+  border-radius: var(--gc-radius);
+  box-shadow: var(--gc-shadow);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+/* NOTE: deliberately no `height: 100%` here. A percentage height on a card
+   inside a content-sized Bootstrap column resolves circularly and the card
+   overflows its section (it used to spill over the footer). Where cards sit
+   side by side and need to match, add Bootstrap's `h-100` on that instance. */
+.gc-card:hover { transform: translateY(-3px); box-shadow: var(--gc-shadow-lg); }
+.gc-card-head {
+  background: var(--gc-green-700); color: #fff;
+  padding: .75rem 1.125rem;
+  border-radius: calc(var(--gc-radius) - 1px) calc(var(--gc-radius) - 1px) 0 0;
+  font-weight: 600; font-size: 1.0625rem;
+  display: flex; align-items: center; justify-content: space-between; gap: .5rem;
+}
+.gc-card-head a { color: #d7ece4; font-size: .8125rem; font-weight: 500; }
+.gc-card-head a:hover { color: #fff; }
+
+/* Equal-height cards in a column that ALSO holds a heading. Uses flex growth
+   rather than height:100%, which would resolve against the whole column
+   (heading included) and overflow by exactly the heading's height. */
+.gc-col-fill { display: flex; flex-direction: column; }
+.gc-col-fill > .gc-card { flex: 1 1 auto; }
+
+/* ------------------------------------------------------------- 10. Hero carousel */
+.gc-hero { border-radius: var(--gc-radius); overflow: hidden; box-shadow: var(--gc-shadow); background: #0b1a15; }
+.gc-hero .carousel-item img { width: 100%; height: 420px; object-fit: cover; }
+.gc-hero .carousel-caption {
+  left: 0; right: 0; bottom: 0; padding: 2.5rem 1.5rem 1.25rem; text-align: left;
+  background: linear-gradient(to top, rgba(0,29,22,.88), rgba(0,29,22,0));
+}
+.gc-hero .carousel-caption h2 { color: #fff; font-size: 1.25rem; margin: 0; text-shadow: 0 1px 3px rgba(0,0,0,.5); }
+.gc-hero .carousel-indicators { margin-bottom: .5rem; }
+@media (max-width: 991.98px) { .gc-hero .carousel-item img { height: 300px; } }
+@media (max-width: 575.98px) { .gc-hero .carousel-item img { height: 220px; } }
+
+/* -------------------------------------------------------- 11. Notice board widget */
+.gc-noticeboard { display: flex; flex-direction: column; height: 100%; }
+.gc-noticeboard .gc-nb-body { padding: .25rem 0; overflow-y: auto; max-height: 330px; }
+.gc-nb-item { display: block; padding: .7rem 1.125rem; border-bottom: 1px dashed var(--gc-line); color: var(--gc-ink); }
+.gc-nb-item:last-child { border-bottom: 0; }
+.gc-nb-item:hover { background: var(--gc-green-50); text-decoration: none; }
+.gc-nb-item .gc-nb-title { font-weight: 500; font-size: .9375rem; display: block; }
+.gc-nb-item .gc-nb-date { font-size: .8125rem; color: var(--gc-muted); }
+
+/* ------------------------------------------------------------- 12. Badges/chips */
+.gc-badge-new {
+  background: var(--gc-red); color: #fff; font-size: .6875rem; font-weight: 600;
+  padding: .1rem .45rem; border-radius: 999px; vertical-align: middle; margin-inline-start: .35rem;
+}
+.gc-badge-pin { color: var(--gc-gold); margin-inline-end: .3rem; }
+.gc-chip {
+  display: inline-block; background: var(--gc-green-100); color: var(--gc-green-800);
+  font-size: .75rem; font-weight: 600; padding: .15rem .6rem; border-radius: 999px;
+}
+.gc-filter-chip {
+  border: 1px solid var(--gc-line); background: #fff; color: var(--gc-muted);
+  border-radius: 999px; padding: .35rem .95rem; font-size: .875rem; cursor: pointer;
+  transition: all .15s ease;
+}
+.gc-filter-chip:hover { border-color: var(--gc-green-600); color: var(--gc-green-700); }
+.gc-filter-chip[aria-pressed="true"] {
+  background: var(--gc-green-700); border-color: var(--gc-green-700); color: #fff;
+}
+
+/* ----------------------------------------------------------------- 13. Stat strip */
+.gc-stats { background: var(--gc-green-800); color: #fff; }
+.gc-stat { text-align: center; padding: 1.5rem .75rem; }
+.gc-stat i { font-size: 1.5rem; color: var(--gc-gold); display: block; margin-bottom: .35rem; }
+.gc-stat .gc-stat-value { font-size: 1.6rem; font-weight: 700; line-height: 1.2; color: #fff; }
+.gc-stat .gc-stat-label { font-size: .875rem; color: #bcd9ce; }
+
+/* ---------------------------------------------------------------- 14. Quick links */
+.gc-quick {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: .6rem; text-align: center; padding: 1.5rem .75rem;
+  background: var(--gc-surface); border: 1px solid var(--gc-line);
+  border-radius: var(--gc-radius); color: var(--gc-green-900); height: 100%;
+  transition: all .18s ease;
+}
+.gc-quick i { font-size: 1.75rem; color: var(--gc-green-700); }
+.gc-quick:hover {
+  background: var(--gc-green-700); color: #fff; text-decoration: none;
+  transform: translateY(-3px); box-shadow: var(--gc-shadow-lg);
+}
+.gc-quick:hover i { color: var(--gc-gold); }
+.gc-quick span { font-weight: 500; font-size: .9375rem; }
+
+/* ------------------------------------------------------------ 15. Notice list page */
+.gc-notice-row { border-bottom: 1px solid var(--gc-line); padding: 1rem 0; }
+.gc-notice-row:last-child { border-bottom: 0; }
+.gc-notice-row h3 { font-size: 1.0625rem; margin: 0 0 .25rem; }
+.gc-notice-row h3 a { color: var(--gc-green-900); }
+.gc-notice-row h3 a:hover { color: var(--gc-green-700); }
+.gc-notice-meta { font-size: .8125rem; color: var(--gc-muted); display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; }
+
+/* -------------------------------------------------------- 16. Markdown body (notice) */
+.gc-md { font-size: 1.0625rem; }
+.gc-md h1 { font-size: 1.5rem; margin: 1.5rem 0 .75rem; }
+.gc-md h2 { font-size: 1.3rem; margin: 1.5rem 0 .75rem; }
+.gc-md h3 { font-size: 1.1rem; margin: 1.25rem 0 .5rem; }
+.gc-md p { margin-bottom: 1rem; }
+.gc-md ul, .gc-md ol { margin-bottom: 1rem; padding-inline-start: 1.5rem; }
+.gc-md li { margin-bottom: .35rem; }
+.gc-md strong { color: var(--gc-green-900); font-weight: 600; }
+.gc-md blockquote {
+  border-inline-start: 4px solid var(--gc-green-600);
+  background: var(--gc-green-50); padding: .75rem 1rem; margin: 0 0 1rem; border-radius: 0 var(--gc-radius-sm) var(--gc-radius-sm) 0;
+}
+.gc-md table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; }
+.gc-md th, .gc-md td { border: 1px solid var(--gc-line); padding: .5rem .75rem; }
+.gc-md th { background: var(--gc-green-50); }
+.gc-md img { max-width: 100%; height: auto; border-radius: var(--gc-radius-sm); }
+
+/* --------------------------------------------------------------- 17. People cards */
+.gc-person { text-align: center; padding: 1.5rem 1rem; }
+.gc-person-photo {
+  width: 96px; height: 96px; border-radius: 50%; object-fit: cover;
+  margin: 0 auto .85rem; display: block; border: 3px solid var(--gc-green-100);
+}
+.gc-person-initial {
+  width: 96px; height: 96px; border-radius: 50%; margin: 0 auto .85rem;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--gc-green-100); color: var(--gc-green-800);
+  font-size: 2rem; font-weight: 700; border: 3px solid var(--gc-green-100);
+}
+.gc-person h3 { font-size: 1.0625rem; margin: 0 0 .15rem; }
+.gc-person .gc-person-role { color: var(--gc-green-700); font-weight: 600; font-size: .875rem; margin-bottom: .35rem; }
+.gc-person .gc-person-note { color: var(--gc-muted); font-size: .875rem; margin: 0; }
+
+/* ------------------------------------------------------------------ 18. Gallery */
+.gc-gallery-item {
+  display: block; border-radius: var(--gc-radius); overflow: hidden;
+  border: 1px solid var(--gc-line); background: #fff; box-shadow: var(--gc-shadow);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.gc-gallery-item:hover { transform: translateY(-3px); box-shadow: var(--gc-shadow-lg); }
+.gc-gallery-item img { width: 100%; height: 190px; object-fit: cover; display: block; }
+.gc-gallery-item figcaption { padding: .6rem .85rem; font-size: .875rem; color: var(--gc-ink); }
+
+/* --------------------------------------------------------- 19. At-a-glance table */
+.gc-glance { width: 100%; border-collapse: collapse; background: #fff; }
+.gc-glance th, .gc-glance td { border: 1px solid var(--gc-line); padding: .7rem 1rem; font-size: .9375rem; }
+.gc-glance th { background: var(--gc-green-50); color: var(--gc-green-900); width: 40%; font-weight: 600; text-align: start; }
+
+/* ------------------------------------------------------------------- 20. Footer */
+.gc-footer { background: var(--gc-green-900); color: #b9d2c8; padding-top: 2.75rem; }
+.gc-footer h3 { color: #fff; font-size: 1rem; margin-bottom: 1rem; font-weight: 600; }
+.gc-footer a { color: #b9d2c8; }
+.gc-footer a:hover { color: #fff; }
+.gc-footer ul { list-style: none; padding: 0; margin: 0; }
+.gc-footer li { margin-bottom: .5rem; font-size: .9375rem; }
+.gc-footer-bottom {
+  border-top: 1px solid rgba(255,255,255,.12);
+  margin-top: 2rem; padding: 1rem 0; font-size: .875rem; color: #94b4a8;
+}
+
+/* --------------------------------------------------------------- 21. Back to top */
+.gc-top {
+  position: fixed; inset: auto 1.25rem 1.25rem auto; z-index: 1030;
+  width: 44px; height: 44px; border-radius: 50%; border: 0;
+  background: var(--gc-green-700); color: #fff; box-shadow: var(--gc-shadow-lg);
+  display: none; align-items: center; justify-content: center; font-size: 1.125rem;
+}
+.gc-top.is-visible { display: flex; }
+.gc-top:hover { background: var(--gc-green-800); }
+
+/* ------------------------------------------------------- 22. Loading / empty states */
+.gc-state { padding: 2.5rem 1rem; text-align: center; color: var(--gc-muted); }
+.gc-state i { font-size: 2rem; display: block; margin-bottom: .5rem; opacity: .6; }
+.gc-state--error i { color: var(--gc-red); opacity: 1; }
+
+/* ------------------------------------------------------------------- 23. Utilities */
+.gc-map {
+  display: block;
+  width: 100%;
+  height: 340px;
+  border: 0;
+  border-radius: var(--gc-radius-sm);
+}
+.gc-map--tall { height: 460px; }
+@media (max-width: 575.98px) {
+  .gc-map { height: 260px; }
+  .gc-map--tall { height: 300px; }
+}
+.gc-lead { font-size: 1.0625rem; color: #3c4a44; }
+.text-gold { color: var(--gc-gold) !important; }
+
+@media print {
+  .gc-topbar, .gc-nav, .gc-breadcrumb-bar, .gc-top, .gc-footer, .gc-hero { display: none !important; }
+  body { background: #fff; }
+}

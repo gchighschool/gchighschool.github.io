@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<title>হোম — ঘোনার চালা উচ্চ বিদ্যালয়</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#1D6B3C}a:hover{color:#14502C}
+.menu a{color:#FFFFFF;text-decoration:none}.menu a:hover{text-decoration:underline;text-underline-offset:4px;color:#FFFFFF}
+.plain a{color:#1B1F1D;text-decoration:none}.plain a:hover{color:#1D6B3C;text-decoration:underline}
+.foot a{color:#FFFFFF;text-decoration:none}.foot a:hover{text-decoration:underline;color:#FFFFFF}
+@media (max-width:700px){.hide-sm{display:none !important}}
+</style>
+</helmet>
+<div style="font-family: 'Hind Siliguri', system-ui, sans-serif; color: #1B1F1D; background: #FFFFFF; font-size: 17px; line-height: 1.7">
+
+<!-- Header -->
+<header style="border-bottom: 1px solid #DCDFDC">
+<div style="max-width: 1180px; margin: 0 auto; padding: 14px 24px; display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; justify-content: space-between">
+<a href="#top" style="display: flex; gap: 14px; align-items: center; text-decoration: none; color: #1B1F1D">
+<img src="/_blob/4b81fe4c27f0163ca3d9ae6b267c11a8" alt="বিদ্যালয়ের মনোগ্রাম" style="width: 56px; height: 66px; object-fit: contain">
+<span style="display: flex; flex-direction: column; line-height: 1.3">
+<span style="font-weight: 700; font-size: 26px">{{schoolName}}</span>
+<span style="font-size: 14px; color: #5A625E">{{schoolSub}}</span>
+</span>
+</a>
+<div style="display: flex; gap: 18px; align-items: center; font-size: 15px">
+<a href="tel:+8801309114612" class="hide-sm" style="display: flex; flex-direction: column; line-height: 1.35; text-decoration: none; color: #1B1F1D"><span style="font-size: 13px; color: #5A625E">অফিস</span><span style="font-weight: 600">০১৩০৯-১১৪৬১২</span></a>
+<div role="group" aria-label="ভাষা নির্বাচন" style="display: inline-flex; border: 1px solid #DCDFDC; border-radius: 6px; overflow: hidden">
+<button type="button" aria-pressed="{{bnPressed}}" onClick="{{setBn}}" style="{{bnStyle}}">বাংলা</button>
+<button type="button" aria-pressed="{{enPressed}}" onClick="{{setEn}}" style="{{enStyle}}">English</button>
+</div>
+</div>
+</div>
+<nav class="menu" aria-label="প্রধান মেনু" style="background: #1D6B3C">
+<div style="max-width: 1180px; margin: 0 auto; padding: 0 12px; display: flex; flex-wrap: wrap; font-size: 16px; font-weight: 500">
+<sc-for list="{{nav}}" as="n" hint-placeholder-count="8">
+<a href="{{n.href}}" style="{{n.style}}">{{n.label}}</a>
+</sc-for>
+</div>
+</nav>
+</header>
+
+<!-- Photo -->
+<section id="top" style="max-width: 1180px; margin: 0 auto; padding: 24px 24px 0">
+<div style="position: relative">
+<img src="{{slide.src}}" alt="{{slide.caption}}" style="display: block; width: 100%; height: 480px; object-fit: cover; border-radius: 6px">
+<button type="button" aria-label="আগের ছবি" onClick="{{prev}}" style="position: absolute; left: 12px; top: 50%; margin-top: -22px; width: 44px; height: 44px; border: 0; border-radius: 6px; background: rgba(255,255,255,.92); color: #1B1F1D; cursor: pointer; display: grid; place-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg></button>
+<button type="button" aria-label="পরের ছবি" onClick="{{next}}" style="position: absolute; right: 12px; top: 50%; margin-top: -22px; width: 44px; height: 44px; border: 0; border-radius: 6px; background: rgba(255,255,255,.92); color: #1B1F1D; cursor: pointer; display: grid; place-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button>
+</div>
+<p style="margin: 8px 0 0; font-size: 14px; color: #5A625E">{{slide.caption}} <span style="margin-left: 8px">({{counter}})</span></p>
+</section>
+
+<!-- Notices + Admission -->
+<section style="max-width: 1180px; margin: 0 auto; padding: 48px 24px 0">
+<div style="display: flex; flex-wrap: wrap; gap: 32px; align-items: flex-start">
+
+<div class="plain" style="flex: 1.7 1 480px; min-width: 0">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 8px">
+<h2 style="margin: 0; font-size: 24px; font-weight: 700">নোটিশ</h2>
+<a href="Notices.dc.html" style="color: #1D6B3C; font-size: 15px; font-weight: 600">সব নোটিশ</a>
+</div>
+<ul style="list-style: none; margin: 0; padding: 0; border-top: 1px solid #DCDFDC">
+<li style="border-bottom: 1px solid #DCDFDC"><a href="Notices.dc.html" style="display: block; padding: 14px 0"><span style="display: block; font-size: 14px; color: #5A625E">২০ আগস্ট ২০২৫ · ভর্তি <span style="margin-left: 6px; background: #C0322B; color: #FFFFFF; font-size: 12px; font-weight: 600; padding: 1px 6px; border-radius: 4px">নতুন</span></span><span style="display: block; font-weight: 600; font-size: 18px">ভর্তি পরীক্ষার সময়সূচি — ২০২৬ শিক্ষাবর্ষ</span></a></li>
+<li style="border-bottom: 1px solid #DCDFDC"><a href="Notices.dc.html" style="display: block; padding: 14px 0"><span style="display: block; font-size: 14px; color: #5A625E">৩০ আগস্ট ২০২৫ · সাধারণ</span><span style="display: block; font-weight: 600; font-size: 18px">বিদ্যালয় পুনরায় খোলার বিজ্ঞপ্তি</span></a></li>
+<li style="border-bottom: 1px solid #DCDFDC"><a href="Notices.dc.html" style="display: block; padding: 14px 0"><span style="display: block; font-size: 14px; color: #5A625E">২৫ আগস্ট ২০২৫ · সাধারণ</span><span style="display: block; font-weight: 600; font-size: 18px">বার্ষিক ক্রীড়া প্রতিযোগিতা ২০২৫</span></a></li>
+</ul>
+</div>
+
+<div id="admission" style="flex: 1 1 300px; min-width: 0; border: 1px solid #DCDFDC; border-radius: 6px; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-size: 24px; font-weight: 700">ভর্তি ২০২৬</h2>
+<img src="/_blob/3464a5b79df8985dd3c80e8c214a914a" alt="ভর্তি বিজ্ঞপ্তির পোস্টার" style="display: block; width: 100%; height: 150px; object-fit: cover; border-radius: 6px">
+<p style="margin: 0; font-size: 16px">ষষ্ঠ শ্রেণিতে নতুন ভর্তি চলছে। অন্যান্য শ্রেণিতে আসন খালি সাপেক্ষে ভর্তি নেওয়া হবে।</p>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<a href="Notices.dc.html" style="background: #1D6B3C; color: #FFFFFF; text-decoration: none; font-weight: 600; padding: 10px 18px; min-height: 24px; border-radius: 6px; display: inline-flex; align-items: center">বিস্তারিত</a>
+<a href="tel:+8801309114612" style="border: 1px solid #1D6B3C; color: #1D6B3C; text-decoration: none; font-weight: 600; padding: 9px 17px; min-height: 24px; border-radius: 6px; display: inline-flex; align-items: center">ফোন করুন</a>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- About -->
+<section id="about" style="margin-top: 56px; background: #F3F4F2">
+<div style="max-width: 1180px; margin: 0 auto; padding: 48px 24px; display: flex; flex-wrap: wrap; gap: 32px 48px">
+<div style="flex: 1.6 1 460px; min-width: 0">
+<h2 style="margin: 0 0 12px; font-size: 24px; font-weight: 700">পরিচিতি</h2>
+<p style="margin: 0 0 12px">ঘোনার চালা উচ্চ বিদ্যালয় ১০ জানুয়ারি ১৯৮৫ সালে টাঙ্গাইলের সখিপুর উপজেলার ঘোনার চালা বাজারে প্রতিষ্ঠিত হয়। ১ জানুয়ারি ১৯৮৮ সালে বিদ্যালয়টি সরকারি স্বীকৃতি পায় এবং বর্তমানে এমপিওভুক্ত। এটি ঢাকা শিক্ষা বোর্ডের অধীন একটি বেসরকারি মাধ্যমিক বিদ্যালয় (EIIN ১১৪৬১২)।</p>
+<p style="margin: 0 0 16px">ষষ্ঠ থেকে দশম শ্রেণি পর্যন্ত পাঠদান করা হয়। নবম শ্রেণি থেকে বিজ্ঞান, ব্যবসায় শিক্ষা ও মানবিক — তিনটি বিভাগ রয়েছে।</p>
+<a href="#about" style="font-weight: 600">বিস্তারিত পড়ুন</a>
+</div>
+<div class="plain" style="flex: 1 1 280px; min-width: 0">
+<h3 style="margin: 0 0 8px; font-size: 18px; font-weight: 600">প্রয়োজনীয় লিংক</h3>
+<ul style="list-style: none; margin: 0; padding: 0; border-top: 1px solid #DCDFDC">
+<li style="border-bottom: 1px solid #DCDFDC"><a href="#academics" style="display: flex; align-items: center; min-height: 44px">একাডেমিক তথ্য</a></li>
+<li style="border-bottom: 1px solid #DCDFDC"><a href="#people" style="display: flex; align-items: center; min-height: 44px">শিক্ষকমণ্ডলী</a></li>
+<li style="border-bottom: 1px solid #DCDFDC"><a href="#people" style="display: flex; align-items: center; min-height: 44px">পরিচালনা পর্ষদ</a></li>
+<li style="border-bottom: 1px solid #DCDFDC"><a href="https://educationboardresults.gov.bd" style="display: flex; align-items: center; min-height: 44px">পরীক্ষার ফলাফল (শিক্ষা বোর্ড)</a></li>
+<li style="border-bottom: 1px solid #DCDFDC"><a href="https://dhakaeducationboard.gov.bd" style="display: flex; align-items: center; min-height: 44px">ঢাকা শিক্ষা বোর্ড</a></li>
+</ul>
+</div>
+</div>
+</section>
+
+<!-- People -->
+<section id="people" style="max-width: 1180px; margin: 0 auto; padding: 56px 24px 0">
+<div style="display: flex; flex-wrap: wrap; gap: 24px">
+<div style="flex: 1 1 440px; min-width: 0; display: flex; gap: 18px; align-items: flex-start">
+<div style="flex: none; width: 120px; height: 150px; border-radius: 6px; background: #F3F4F2; border: 1px solid #DCDFDC; display: grid; place-items: center; font-size: 14px; color: #5A625E">ছবি</div>
+<div style="min-width: 0">
+<h3 style="margin: 0; font-size: 18px; font-weight: 600">মোঃ নজরুল ইসলাম</h3>
+<p style="margin: 0 0 8px; font-size: 15px; color: #5A625E">প্রধান শিক্ষক</p>
+<p style="margin: 0; font-size: 16px">[প্রধান শিক্ষকের বাণী]</p>
+</div>
+</div>
+<div style="flex: 1 1 440px; min-width: 0; display: flex; gap: 18px; align-items: flex-start">
+<div style="flex: none; width: 120px; height: 150px; border-radius: 6px; background: #F3F4F2; border: 1px solid #DCDFDC; display: grid; place-items: center; font-size: 14px; color: #5A625E">ছবি</div>
+<div style="min-width: 0">
+<h3 style="margin: 0; font-size: 18px; font-weight: 600">আলহাজ্ব আমজাদ হোসেন মাস্টার</h3>
+<p style="margin: 0 0 8px; font-size: 15px; color: #5A625E">সভাপতি, পরিচালনা পর্ষদ</p>
+<p style="margin: 0; font-size: 16px">বিদ্যালয়ের সাবেক সহকারী প্রধান শিক্ষক এবং কালিয়া ইউনিয়ন পরিষদের সাবেক চেয়ারম্যান।</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Gallery -->
+<section id="gallery" style="max-width: 1180px; margin: 0 auto; padding: 56px 24px 0">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 14px">
+<h2 style="margin: 0; font-size: 24px; font-weight: 700">গ্যালারি</h2>
+<a href="#gallery" style="font-size: 15px; font-weight: 600">সব ছবি</a>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px">
+<figure style="margin: 0"><img src="/_blob/3e61816ed1c488dda0448b26ec5ae1f8" alt="বিদ্যালয় প্রাঙ্গণে শিক্ষার্থীদের সমাবেশ" style="display: block; width: 100%; height: 180px; object-fit: cover; border-radius: 6px"><figcaption style="margin-top: 6px; font-size: 14px; color: #5A625E">বিদ্যালয় প্রাঙ্গণে শিক্ষার্থীদের সমাবেশ</figcaption></figure>
+<figure style="margin: 0"><img src="/_blob/08ae4ef2633a4ac9260a33b58ef7ad2f" alt="এসএসসি কৃতি শিক্ষার্থী সংবর্ধনা" style="display: block; width: 100%; height: 180px; object-fit: cover; border-radius: 6px"><figcaption style="margin-top: 6px; font-size: 14px; color: #5A625E">এসএসসি কৃতি শিক্ষার্থী সংবর্ধনা</figcaption></figure>
+<figure style="margin: 0"><img src="/_blob/430bfe8865bffd2ada332e1a022a4dce" alt="প্রাত্যহিক সমাবেশে শিক্ষার্থীরা" style="display: block; width: 100%; height: 180px; object-fit: cover; border-radius: 6px"><figcaption style="margin-top: 6px; font-size: 14px; color: #5A625E">প্রাত্যহিক সমাবেশে শিক্ষার্থীরা</figcaption></figure>
+<figure style="margin: 0"><img src="/_blob/d75b728630af0fa1f976d82cf7a70fd3" alt="বিদ্যালয়ের মূল ভবন" style="display: block; width: 100%; height: 180px; object-fit: cover; border-radius: 6px"><figcaption style="margin-top: 6px; font-size: 14px; color: #5A625E">বিদ্যালয়ের মূল ভবন</figcaption></figure>
+</div>
+</section>
+
+<!-- Contact -->
+<section id="contact" style="max-width: 1180px; margin: 0 auto; padding: 56px 24px 64px">
+<h2 style="margin: 0 0 14px; font-size: 24px; font-weight: 700">যোগাযোগ</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 24px 32px">
+<div style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<p style="margin: 0"><span style="display: block; font-size: 14px; color: #5A625E">ঠিকানা</span>ঘোনার চালা বাজার, কাচুয়া, সখিপুর, টাঙ্গাইল-১৯৫১</p>
+<p style="margin: 0"><span style="display: block; font-size: 14px; color: #5A625E">ফোন</span><a href="tel:+8801309114612">০১৩০৯-১১৪৬১২</a> (অফিস)<br><a href="tel:+8801966824398">০১৯৬৬-৮২৪৩৯৮</a></p>
+<p style="margin: 0"><span style="display: block; font-size: 14px; color: #5A625E">ইমেইল</span><a href="mailto:ghonarchalahighschool@gmail.com" style="word-break: break-all">ghonarchalahighschool@gmail.com</a></p>
+<p style="margin: 0"><span style="display: block; font-size: 14px; color: #5A625E">ফেসবুক</span><a href="https://facebook.com/ghonarchalahighschoolofficial/">ghonarchalahighschoolofficial</a></p>
+</div>
+<a href="https://maps.google.com/?q=Ghonar+Chala+High+School" style="flex: 2 1 440px; min-width: 0; min-height: 300px; border-radius: 6px; background: #F3F4F2; border: 1px solid #DCDFDC; display: grid; place-items: center; color: #5A625E; text-decoration: none; font-size: 15px">Google ম্যাপ (এখানে এমবেড হবে)</a>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="foot" style="background: #14502C; color: #FFFFFF; font-size: 15px">
+<div style="max-width: 1180px; margin: 0 auto; padding: 28px 24px; display: flex; flex-wrap: wrap; gap: 12px 32px; justify-content: space-between; align-items: center">
+<span>© ২০২৬ ঘোনার চালা উচ্চ বিদ্যালয় · EIIN ১১৪৬১২</span>
+<nav aria-label="ফুটার লিংক" style="display: flex; flex-wrap: wrap; gap: 4px 20px"><a href="#about">পরিচিতি</a><a href="Notices.dc.html">নোটিশ</a><a href="#admission">ভর্তি</a><a href="#contact">যোগাযোগ</a></nav>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2620}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { i: 0, lang: 'bn' }; }
+  renderVals() {
+    const bn = (s) => String(s).replace(/\d/g, (d) => '০১২৩৪৫৬৭৮৯'[d]);
+    const slides = [
+      { src: '/_blob/3e61816ed1c488dda0448b26ec5ae1f8', caption: 'বিদ্যালয় প্রাঙ্গণে শিক্ষার্থীদের সমাবেশ' },
+      { src: '/_blob/d75b728630af0fa1f976d82cf7a70fd3', caption: 'বিদ্যালয়ের মূল ভবন' },
+      { src: '/_blob/08ae4ef2633a4ac9260a33b58ef7ad2f', caption: 'এসএসসি কৃতি শিক্ষার্থী সংবর্ধনা' },
+      { src: '/_blob/430bfe8865bffd2ada332e1a022a4dce', caption: 'প্রাত্যহিক সমাবেশে শিক্ষার্থীরা' }
+    ];
+    const i = this.state.i, n = slides.length, en = this.state.lang === 'en';
+    const items = [
+      ['হোম', 'Home', '#top'], ['পরিচিতি', 'About', '#about'], ['একাডেমিক', 'Academics', '#about'],
+      ['ভর্তি', 'Admission', '#admission'], ['নোটিশ', 'Notices', 'Notices.dc.html'],
+      ['শিক্ষকমণ্ডলী', 'Teachers', '#people'], ['গ্যালারি', 'Gallery', '#gallery'], ['যোগাযোগ', 'Contact', '#contact']
+    ];
+    const btn = 'padding: 6px 12px; min-height: 36px; border: 0; font: inherit; font-size: 14px; cursor: pointer; ';
+    return {
+      slide: slides[i],
+      counter: bn(i + 1) + '/' + bn(n),
+      prev: () => this.setState({ i: (i + n - 1) % n }),
+      next: () => this.setState({ i: (i + 1) % n }),
+      nav: items.map((x, k) => ({
+        label: en ? x[1] : x[0], href: x[2],
+        style: 'display: inline-flex; align-items: center; min-height: 48px; padding: 0 14px;' + (k === 0 ? ' background: #14502C; font-weight: 600' : '')
+      })),
+      schoolName: en ? 'Ghonar Chala High School' : 'ঘোনার চালা উচ্চ বিদ্যালয়',
+      schoolSub: en ? 'Sakhipur, Tangail · Est. 1985 · EIIN 114612' : 'সখিপুর, টাঙ্গাইল · স্থাপিত ১৯৮৫ · EIIN ১১৪৬১২',
+      bnStyle: btn + (en ? 'background: #FFFFFF; color: #1B1F1D' : 'background: #1D6B3C; color: #FFFFFF; font-weight: 600'),
+      enStyle: btn + (en ? 'background: #1D6B3C; color: #FFFFFF; font-weight: 600' : 'background: #FFFFFF; color: #1B1F1D'),
+      bnPressed: en ? 'false' : 'true',
+      enPressed: en ? 'true' : 'false',
+      setBn: () => this.setState({ lang: 'bn' }),
+      setEn: () => this.setState({ lang: 'en' })
+    };
+  }
+}
+</script>
+</body>
+</html>

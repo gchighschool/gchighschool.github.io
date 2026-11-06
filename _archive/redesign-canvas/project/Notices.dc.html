@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<title>নোটিশ — ঘোনার চালা উচ্চ বিদ্যালয়</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#1D6B3C}a:hover{color:#14502C}
+.menu a{color:#FFFFFF;text-decoration:none}.menu a:hover{text-decoration:underline;text-underline-offset:4px;color:#FFFFFF}
+.foot a{color:#FFFFFF;text-decoration:none}
+@keyframes gc-spin{to{transform:rotate(360deg)}}
+.spin{animation:gc-spin .8s linear infinite}
+@media (prefers-reduced-motion:reduce){.spin{animation-duration:2.4s}}
+input:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid #1D6B3C;outline-offset:2px}
+</style>
+</helmet>
+<div style="font-family: 'Hind Siliguri', system-ui, sans-serif; color: #1B1F1D; background: #FFFFFF; font-size: 17px; line-height: 1.7">
+
+<!-- Header (same as home) -->
+<header style="border-bottom: 1px solid #DCDFDC">
+<div style="max-width: 1180px; margin: 0 auto; padding: 14px 24px; display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; justify-content: space-between">
+<a href="Main.dc.html" style="display: flex; gap: 14px; align-items: center; text-decoration: none; color: #1B1F1D">
+<img src="/_blob/4b81fe4c27f0163ca3d9ae6b267c11a8" alt="বিদ্যালয়ের মনোগ্রাম" style="width: 56px; height: 66px; object-fit: contain">
+<span style="display: flex; flex-direction: column; line-height: 1.3">
+<span style="font-weight: 700; font-size: 26px">ঘোনার চালা উচ্চ বিদ্যালয়</span>
+<span style="font-size: 14px; color: #5A625E">সখিপুর, টাঙ্গাইল · স্থাপিত ১৯৮৫ · EIIN ১১৪৬১২</span>
+</span>
+</a>
+<a href="tel:+8801309114612" style="display: flex; flex-direction: column; line-height: 1.35; text-decoration: none; color: #1B1F1D; font-size: 15px"><span style="font-size: 13px; color: #5A625E">অফিস</span><span style="font-weight: 600">০১৩০৯-১১৪৬১২</span></a>
+</div>
+<nav class="menu" aria-label="প্রধান মেনু" style="background: #1D6B3C">
+<div style="max-width: 1180px; margin: 0 auto; padding: 0 12px; display: flex; flex-wrap: wrap; font-size: 16px; font-weight: 500">
+<a href="Main.dc.html" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 14px">হোম</a>
+<a href="Main.dc.html" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 14px">পরিচিতি</a>
+<a href="Main.dc.html" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 14px">একাডেমিক</a>
+<a href="Main.dc.html" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 14px">ভর্তি</a>
+<a href="Notices.dc.html" aria-current="page" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 14px; background: #14502C; font-weight: 600">নোটিশ</a>
+<a href="Main.dc.html" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 14px">শিক্ষকমণ্ডলী</a>
+<a href="Main.dc.html" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 14px">গ্যালারি</a>
+<a href="Main.dc.html" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 14px">যোগাযোগ</a>
+</div>
+</nav>
+</header>
+
+<main style="max-width: 1180px; margin: 0 auto; padding: 28px 24px 64px">
+<p style="margin: 0 0 4px; font-size: 14px; color: #5A625E"><a href="Main.dc.html">হোম</a> / নোটিশ</p>
+<h1 style="margin: 0 0 20px; font-size: 30px; font-weight: 700; line-height: 1.3">নোটিশ</h1>
+
+<div style="display: flex; flex-wrap: wrap; gap: 32px; align-items: flex-start">
+
+<!-- List -->
+<div style="flex: 1 1 380px; min-width: 0">
+<label for="notice-search" style="display: block; font-size: 14px; color: #5A625E; margin-bottom: 4px">নোটিশ খুঁজুন</label>
+<input id="notice-search" type="search" value="{{query}}" onChange="{{onSearch}}" placeholder="যেমন: ভর্তি" style="box-sizing: border-box; width: 100%; min-height: 44px; padding: 8px 12px; border: 1px solid #B9BFBB; border-radius: 6px; font: inherit; font-size: 16px; color: #1B1F1D; background: #FFFFFF">
+<div role="group" aria-label="বিভাগ অনুযায়ী দেখুন" style="display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 8px">
+<sc-for list="{{cats}}" as="c" hint-placeholder-count="3">
+<button type="button" aria-pressed="{{c.pressed}}" onClick="{{c.pick}}" style="{{c.style}}">{{c.label}}</button>
+</sc-for>
+</div>
+<ul style="list-style: none; margin: 0; padding: 0; border-top: 1px solid #DCDFDC">
+<sc-for list="{{list}}" as="n" hint-placeholder-count="3">
+<li style="border-bottom: 1px solid #DCDFDC">
+<button type="button" aria-current="{{n.current}}" onClick="{{n.pick}}" style="{{n.style}}">
+<span style="display: block; font-size: 14px; color: #5A625E">{{n.date}} · {{n.cat}}<sc-if value="{{n.pinned}}" hint-placeholder-val="{{ false }}"><span style="margin-left: 6px; background: #C0322B; color: #FFFFFF; font-size: 12px; font-weight: 600; padding: 1px 6px; border-radius: 4px">নতুন</span></sc-if></span>
+<span style="display: block; font-weight: 600; font-size: 18px; line-height: 1.5">{{n.title}}</span>
+</button>
+</li>
+</sc-for>
+</ul>
+<sc-if value="{{empty}}" hint-placeholder-val="{{ false }}">
+<p style="margin: 16px 0 0; color: #5A625E">এই খোঁজে কোনো নোটিশ পাওয়া যায়নি।</p>
+</sc-if>
+<div style="margin-top: 16px">
+<sc-if value="{{canLoad}}" hint-placeholder-val="{{ true }}">
+<button type="button" onClick="{{loadMore}}" disabled="{{loading}}" aria-busy="{{loadingAttr}}" style="{{loadStyle}}">
+<sc-if value="{{loading}}" hint-placeholder-val="{{ false }}"><svg class="spin" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9"></path></svg></sc-if>
+<span>{{loadLabel}}</span>
+</button>
+</sc-if>
+<sc-if value="{{done}}" hint-placeholder-val="{{ false }}">
+<p role="status" style="margin: 0; font-size: 15px; color: #5A625E">আর কোনো পুরোনো নোটিশ নেই।</p>
+</sc-if>
+</div>
+</div>
+
+<!-- Detail -->
+<article style="flex: 1.6 1 520px; min-width: 0; border: 1px solid #DCDFDC; border-radius: 6px; padding: 28px 32px">
+<p style="margin: 0; font-size: 14px; color: #5A625E">{{sel.date}} · {{sel.cat}}</p>
+<h2 style="margin: 4px 0 16px; font-size: 26px; font-weight: 700; line-height: 1.4">{{sel.title}}</h2>
+<p style="margin: 0 0 16px">{{sel.intro}}</p>
+<h3 style="margin: 0 0 6px; font-size: 18px; font-weight: 600">{{sel.subhead}}</h3>
+<ul style="margin: 0 0 16px; padding-left: 22px">
+<sc-for list="{{sel.items}}" as="it" hint-placeholder-count="3">
+<li><sc-if value="{{it.label}}" hint-placeholder-val="{{ true }}"><strong>{{it.label}}: </strong></sc-if>{{it.value}}</li>
+</sc-for>
+</ul>
+<p style="margin: 0 0 20px">{{sel.outro}}</p>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; padding-top: 16px; border-top: 1px solid #DCDFDC; font-size: 15px">
+<span style="color: #5A625E; align-self: center">প্রধান শিক্ষক, ঘোনার চালা উচ্চ বিদ্যালয়</span>
+<span style="flex: 1"></span>
+<a href="tel:+8801309114612" style="border: 1px solid #1D6B3C; color: #1D6B3C; text-decoration: none; font-weight: 600; padding: 8px 16px; min-height: 24px; border-radius: 6px; display: inline-flex; align-items: center">অফিসে যোগাযোগ</a>
+</div>
+</article>
+
+</div>
+</main>
+
+<footer class="foot" style="background: #14502C; color: #FFFFFF; font-size: 15px">
+<div style="max-width: 1180px; margin: 0 auto; padding: 28px 24px; display: flex; flex-wrap: wrap; gap: 12px 32px; justify-content: space-between; align-items: center">
+<span>© ২০২৬ ঘোনার চালা উচ্চ বিদ্যালয় · EIIN ১১৪৬১২</span>
+<nav aria-label="ফুটার লিংক" style="display: flex; flex-wrap: wrap; gap: 4px 20px"><a href="Main.dc.html">হোম</a><a href="Notices.dc.html">নোটিশ</a><a href="https://facebook.com/ghonarchalahighschoolofficial/">ফেসবুক</a></nav>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { cat: 'all', sel: '3', q: '', loading: false, done: false }; }
+  componentWillUnmount() { clearTimeout(this.t); }
+  renderVals() {
+    const notices = [
+      { id: '3', date: '২০ আগস্ট ২০২৫', cat: 'ভর্তি', pinned: true, title: 'ভর্তি পরীক্ষার সময়সূচি — ২০২৬ শিক্ষাবর্ষ',
+        intro: '২০২৬ শিক্ষাবর্ষের ভর্তি পরীক্ষা আগামী ১০ ডিসেম্বর ২০২৫ তারিখে অনুষ্ঠিত হবে। ভর্তির আবেদন ফরম বিদ্যালয়ের অফিস থেকে সংগ্রহ করা যাবে।',
+        subhead: 'পরীক্ষার বিবরণ',
+        items: [{ label: 'সময়', value: 'সকাল ৯:০০ টা' }, { label: 'স্থান', value: 'মূল ভবন' }, { label: 'আবেদন ফরম', value: 'বিদ্যালয় অফিস' }],
+        outro: 'ভর্তি সংক্রান্ত যেকোনো তথ্যের জন্য বিদ্যালয় অফিসে যোগাযোগ করুন।' },
+      { id: '1', date: '৩০ আগস্ট ২০২৫', cat: 'সাধারণ', pinned: false, title: 'বিদ্যালয় পুনরায় খোলার বিজ্ঞপ্তি',
+        intro: 'নতুন শিক্ষাবর্ষে ১ সেপ্টেম্বর ২০২৫ তারিখ থেকে সকল শ্রেণির পাঠদান পুনরায় শুরু হবে। সকল শিক্ষার্থীকে সকাল ৮টায় অনুষ্ঠিতব্য ওরিয়েন্টেশন কর্মসূচিতে উপস্থিত থাকার জন্য অনুরোধ করা হলো।',
+        subhead: 'বিস্তারিত',
+        items: [{ label: 'স্থান', value: 'বিদ্যালয় মিলনায়তন' }, { label: 'সময়', value: 'সকাল ৮:০০ টা' }, { label: 'পোশাক', value: 'বিদ্যালয়ের নির্ধারিত ইউনিফর্ম' }],
+        outro: 'অভিভাবকদের সন্তানের সময়মতো উপস্থিতি নিশ্চিত করার জন্য বিশেষভাবে অনুরোধ করা হলো।' },
+      { id: '2', date: '২৫ আগস্ট ২০২৫', cat: 'সাধারণ', pinned: false, title: 'বার্ষিক ক্রীড়া প্রতিযোগিতা ২০২৫',
+        intro: 'আগামী ১৫ সেপ্টেম্বর ২০২৫ তারিখে বিদ্যালয় মাঠে বার্ষিক ক্রীড়া প্রতিযোগিতা অনুষ্ঠিত হবে। সকল শিক্ষার্থীকে বিভিন্ন ইভেন্টে অংশগ্রহণের জন্য উৎসাহিত করা হচ্ছে।',
+        subhead: 'প্রতিযোগিতার ইভেন্টসমূহ',
+        items: [{ label: '', value: '১০০ মিটার দৌড়' }, { label: '', value: 'রিলে দৌড়' }, { label: '', value: 'দীর্ঘ লম্ফ' }, { label: '', value: 'উচ্চ লম্ফ' }],
+        outro: 'আগ্রহী শিক্ষার্থীরা নিজ নিজ শ্রেণিশিক্ষকের নিকট নাম নিবন্ধন করতে পারবে।' }
+    ];
+    const s = this.state;
+    const q = s.q.trim();
+    const shown = notices.filter((n) => (s.cat === 'all' || n.cat === s.cat) && (!q || n.title.includes(q) || n.intro.includes(q)));
+    const sel = shown.find((n) => n.id === s.sel) || shown[0] || notices.find((n) => n.id === s.sel) || notices[0];
+    const chip = 'min-height: 40px; padding: 0 16px; border-radius: 6px; font: inherit; font-size: 15px; cursor: pointer; ';
+    const cats = [['all', 'সব'], ['ভর্তি', 'ভর্তি'], ['সাধারণ', 'সাধারণ']];
+    return {
+      query: s.q,
+      onSearch: (e) => this.setState({ q: e.target.value }),
+      cats: cats.map((c) => ({
+        label: c[1], pressed: s.cat === c[0] ? 'true' : 'false',
+        style: chip + (s.cat === c[0] ? 'border: 1px solid #1D6B3C; background: #1D6B3C; color: #FFFFFF; font-weight: 600' : 'border: 1px solid #B9BFBB; background: #FFFFFF; color: #1B1F1D'),
+        pick: () => this.setState({ cat: c[0] })
+      })),
+      list: shown.map((n) => ({
+        ...n, current: n.id === sel.id ? 'true' : 'false',
+        style: 'display: block; width: 100%; text-align: left; border: 0; cursor: pointer; font: inherit; color: #1B1F1D; padding: 14px 12px; ' + (n.id === sel.id ? 'background: #E8F0EA' : 'background: #FFFFFF'),
+        pick: () => this.setState({ sel: n.id })
+      })),
+      empty: shown.length === 0,
+      sel: sel,
+      loading: s.loading,
+      loadingAttr: s.loading ? 'true' : 'false',
+      canLoad: !s.done,
+      done: s.done,
+      loadLabel: s.loading ? 'লোড হচ্ছে…' : 'পুরোনো নোটিশ দেখুন',
+      loadStyle: 'display: inline-flex; gap: 8px; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 6px; font: inherit; font-size: 15px; font-weight: 600; border: 1px solid #1D6B3C; background: #FFFFFF; color: #1D6B3C; ' + (s.loading ? 'cursor: progress; opacity: .75' : 'cursor: pointer'),
+      loadMore: () => {
+        if (s.loading) return;
+        this.setState({ loading: true });
+        this.t = setTimeout(() => this.setState({ loading: false, done: true }), 4000);
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
