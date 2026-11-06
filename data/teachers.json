@@ -1,0 +1,245 @@
+{
+  "_note": "Roster taken from the school's ERP teacher list. To add another teacher, append an object with the same shape: name / designation / subject / note are each {\"en\",\"bn\"} pairs, 'joined' is the ISO joining date (rendered in the reader's language), and 'photo' is an image path or an empty string, which shows an initials avatar. Headmaster first, then assistant teachers by seniority.",
+  "teachers": [
+    {
+      "name": {
+        "en": "Md. Nazrul Islam",
+        "bn": "মোঃ নজরুল ইসলাম"
+      },
+      "designation": {
+        "en": "Headmaster",
+        "bn": "প্রধান শিক্ষক"
+      },
+      "joined": "1994-04-09",
+      "subject": {
+        "en": "",
+        "bn": ""
+      },
+      "note": {
+        "en": "Also serves as member secretary of the school's managing committee.",
+        "bn": "বিদ্যালয় পরিচালনা পর্ষদের সদস্য সচিব হিসেবেও দায়িত্ব পালন করেন।"
+      },
+      "photo": ""
+    },
+    {
+      "name": {
+        "en": "Md. Ahmed Ali",
+        "bn": "মোঃ আহমেদ আলী"
+      },
+      "designation": {
+        "en": "Assistant Teacher",
+        "bn": "সহকারী শিক্ষক"
+      },
+      "joined": "1991-03-02",
+      "subject": {
+        "en": "",
+        "bn": ""
+      },
+      "note": {
+        "en": "",
+        "bn": ""
+      },
+      "photo": ""
+    },
+    {
+      "name": {
+        "en": "Shahnaz Akter",
+        "bn": "শাহনাজ আক্তার"
+      },
+      "designation": {
+        "en": "Assistant Teacher",
+        "bn": "সহকারী শিক্ষক"
+      },
+      "joined": "2001-03-01",
+      "subject": {
+        "en": "",
+        "bn": ""
+      },
+      "note": {
+        "en": "",
+        "bn": ""
+      },
+      "photo": ""
+    },
+    {
+      "name": {
+        "en": "Md. Dulal Hossain",
+        "bn": "মোঃ দুলাল হোসেন"
+      },
+      "designation": {
+        "en": "Assistant Teacher",
+        "bn": "সহকারী শিক্ষক"
+      },
+      "joined": "2002-09-10",
+      "subject": {
+        "en": "",
+        "bn": ""
+      },
+      "note": {
+        "en": "",
+        "bn": ""
+      },
+      "photo": ""
+    },
+    {
+      "name": {
+        "en": "Rahima Khatun",
+        "bn": "রহিমা খাতুন"
+      },
+      "designation": {
+        "en": "Assistant Teacher",
+        "bn": "সহকারী শিক্ষক"
+      },
+      "joined": "2014-04-07",
+      "subject": {
+        "en": "",
+        "bn": ""
+      },
+      "note": {
+        "en": "",
+        "bn": ""
+      },
+      "photo": ""
+    },
+    {
+      "name": {
+        "en": "Shamali Akter",
+        "bn": "শ্যামলী আক্তার"
+      },
+      "designation": {
+        "en": "Assistant Teacher",
+        "bn": "সহকারী শিক্ষক"
+      },
+      "joined": "2014-04-07",
+      "subject": {
+        "en": "",
+        "bn": ""
+      },
+      "note": {
+        "en": "",
+        "bn": ""
+      },
+      "photo": ""
+    },
+    {
+      "name": {
+        "en": "Juel Rana",
+        "bn": "জুয়েল রানা"
+      },
+      "designation": {
+        "en": "Assistant Teacher",
+        "bn": "সহকারী শিক্ষক"
+      },
+      "joined": "2015-05-13",
+      "subject": {
+        "en": "",
+        "bn": ""
+      },
+      "note": {
+        "en": "",
+        "bn": ""
+      },
+      "photo": ""
+    },
+    {
+      "name": {
+        "en": "Main Uddin",
+        "bn": "মাইন উদ্দিন"
+      },
+      "designation": {
+        "en": "Assistant Teacher",
+        "bn": "সহকারী শিক্ষক"
+      },
+      "joined": "2015-10-21",
+      "subject": {
+        "en": "",
+        "bn": ""
+      },
+      "note": {
+        "en": "",
+        "bn": ""
+      },
+      "photo": ""
+    },
+    {
+      "name": {
+        "en": "Ruhul Amin",
+        "bn": "রুহুল আমিন"
+      },
+      "designation": {
+        "en": "Assistant Teacher",
+        "bn": "সহকারী শিক্ষক"
+      },
+      "joined": "2015-10-21",
+      "subject": {
+        "en": "",
+        "bn": ""
+      },
+      "note": {
+        "en": "",
+        "bn": ""
+      },
+      "photo": ""
+    },
+    {
+      "name": {
+        "en": "Md. Khairul Hasan",
+        "bn": "মোঃ খাইরুল হাসান"
+      },
+      "designation": {
+        "en": "Assistant Teacher",
+        "bn": "সহকারী শিক্ষক"
+      },
+      "joined": "2019-11-11",
+      "subject": {
+        "en": "",
+        "bn": ""
+      },
+      "note": {
+        "en": "",
+        "bn": ""
+      },
+      "photo": ""
+    },
+    {
+      "name": {
+        "en": "Swapan Kumar Roy",
+        "bn": "স্বপন কুমার রায়"
+      },
+      "designation": {
+        "en": "Assistant Teacher",
+        "bn": "সহকারী শিক্ষক"
+      },
+      "joined": "2022-02-01",
+      "subject": {
+        "en": "",
+        "bn": ""
+      },
+      "note": {
+        "en": "",
+        "bn": ""
+      },
+      "photo": ""
+    },
+    {
+      "name": {
+        "en": "Priyanka Rani Modak",
+        "bn": "প্রিয়াঙ্কা রানী মোদক"
+      },
+      "designation": {
+        "en": "Assistant Teacher",
+        "bn": "সহকারী শিক্ষক"
+      },
+      "joined": "2025-08-25",
+      "subject": {
+        "en": "",
+        "bn": ""
+      },
+      "note": {
+        "en": "",
+        "bn": ""
+      },
+      "photo": ""
+    }
+  ]
+}

@@ -1,0 +1,201 @@
+/* ==========================================================================
+   Ghonar Chala High School — anim.css
+   Motion & polish layer. Loaded AFTER style.css. Everything in here is
+   additive — no layout, spacing, colour or type change, just transitions,
+   a scroll-reveal, and a couple of ambient/hover flourishes.
+
+   SAFETY CONTRACT — read this before touching the file:
+   Every rule that could make content invisible before JS runs is scoped
+   under `html.m-motion`. motion.js is the ONLY thing that ever adds that
+   class to <html>, and it only does so after confirming IntersectionObserver
+   exists and the visitor hasn't asked for reduced motion. No JS, blocked JS,
+   or JS error anywhere in this pipeline can result in permanently hidden
+   content — worst case, `html.m-motion` is simply never added and every
+   rule below that depends on it never applies.
+
+   Hover/press/ken-burns rules are NOT gated behind `.m-motion` — they don't
+   hide anything, so they work even if motion.js never runs.
+   ========================================================================== */
+
+/* ------------------------------------------------------- 0. Motion tokens */
+
+:root {
+  /* A calm, slightly decelerated ease — no bounce, no overshoot. */
+  --m-ease:      cubic-bezier(.22, 1, .36, 1);
+  --m-dur:       .55s;   /* scroll-reveal fade/lift */
+  --m-dur-fast:  .22s;   /* hover/press micro-interactions */
+}
+
+/* =====================================================================
+   1. Scroll reveal
+   `.m-reveal` is added by motion.js to each target element right before
+   it is observed; `.m-reveal-in` is added once it has crossed the
+   viewport edge. Uses the standalone `translate` property (not the
+   `transform` shorthand) deliberately: several targets — `.m-card` in
+   particular — already animate `transform` on hover via style.css, and
+   `transition` cannot be split across two competing rules for the same
+   element, only replaced whole. Keeping the reveal offset on `translate`
+   means it can never fight a component's own hover transform.
+   ===================================================================== */
+
+html.m-motion .m-reveal {
+  opacity: 0;
+  translate: 0 16px;
+  transition: opacity var(--m-dur) var(--m-ease),
+              translate var(--m-dur) var(--m-ease);
+}
+html.m-motion .m-reveal.m-reveal-in {
+  opacity: 1;
+  translate: none;
+}
+
+/* `.m-card` and `.m-notice` already own (or gain, below) a `transition` of
+   their own for hover. Restate it here, combined with the reveal
+   transition, at higher specificity (two classes beats one) so the two
+   don't clobber each other — see the note above. Only the `transition`
+   property needs restating; opacity/translate values themselves never
+   collide with anything and keep coming from `.m-reveal` above. */
+html.m-motion .m-card.m-reveal {
+  transition: opacity var(--m-dur) var(--m-ease),
+              translate var(--m-dur) var(--m-ease),
+              transform var(--m-dur-fast) var(--m-ease),
+              box-shadow var(--m-dur-fast) var(--m-ease),
+              border-color var(--m-dur-fast) ease;
+}
+html.m-motion .m-notice.m-reveal {
+  transition: opacity var(--m-dur) var(--m-ease),
+              translate var(--m-dur) var(--m-ease),
+              background-color .3s ease,
+              box-shadow .3s ease;
+}
+
+/* Stagger: motion.js sets an inline `transition-delay` on siblings within
+   the same row/group — nothing else to do here. */
+
+/* =====================================================================
+   2. Cards — richer interactive hover
+   Only the interactive variants lift; a plain .m-card must not move
+   (style.css already enforces that split, this just enriches the value).
+   ===================================================================== */
+
+a.m-card:hover, .m-card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 28px rgba(28, 37, 48, .10), 0 30px 60px rgba(28, 37, 48, .14);
+  border-color: #D6CFC0;
+}
+
+/* =====================================================================
+   3. Buttons — press feedback + a soft sheen on the filled pills
+   Restates `.btn`'s Bootstrap transition list in full (color/background/
+   border/box-shadow) alongside the new transform/sheen — same reasoning
+   as section 1: a partial `transition` redeclare would silently drop
+   Bootstrap's own hover fade for background-color/border-color.
+   ===================================================================== */
+
+.btn {
+  transition: color .15s ease-in-out, background-color .15s ease-in-out,
+              border-color .15s ease-in-out, box-shadow .2s ease-in-out,
+              transform .16s ease;
+}
+.btn:active { transform: scale(.97); }
+
+/* A diagonal light sweep, parked off to the right until hover drags it
+   across. background-image layers over the button's own background-color
+   (set via Bootstrap's --bs-btn-bg), so the pill's colour is untouched. */
+.btn-brass, .btn-primary {
+  background-image: linear-gradient(115deg, transparent 25%, rgba(255, 255, 255, .32) 50%, transparent 75%);
+  background-repeat: no-repeat;
+  background-size: 200% 100%;
+  background-position: 150% 0;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out,
+              border-color .15s ease-in-out, box-shadow .2s ease-in-out,
+              transform .16s ease, background-position .7s ease;
+}
+.btn-brass:hover, .btn-primary:hover { background-position: -50% 0; }
+.btn-brass:hover  { box-shadow: 0 10px 22px rgba(176, 141, 87, .30); }
+.btn-primary:hover { box-shadow: 0 10px 22px rgba(27, 42, 74, .32); }
+
+/* =====================================================================
+   4. .m-link — refine the existing arrow nudge, don't replace it
+   ===================================================================== */
+
+.m-link { transition: color var(--m-dur-fast) var(--m-ease); }
+.m-link svg { transition: transform .28s var(--m-ease); }
+
+/* =====================================================================
+   5. Notices — gentle wash + brass left edge on hover
+   Uses an inset box-shadow for the edge accent rather than a pseudo-
+   element or padding shift: inset shadows paint inside the box, so this
+   can never widen the row or introduce horizontal scroll.
+   ===================================================================== */
+
+.m-notice {
+  transition: background-color .3s ease, box-shadow .3s ease;
+}
+.m-notice:hover {
+  background-color: var(--m-brass-tint);
+  box-shadow: inset 3px 0 0 0 var(--m-brass);
+}
+
+/* =====================================================================
+   6. Nav underline + language pill — smoother, more deliberate easing
+   Values only (duration/curve); geometry and colour are untouched.
+   ===================================================================== */
+
+.m-nav .nav-link::after { transition: transform .32s var(--m-ease); }
+
+.m-lang button {
+  transition: background-color .28s var(--m-ease), color .28s var(--m-ease);
+}
+
+/* =====================================================================
+   7. Hero — a very slow ken-burns drift
+   `.m-hero-frame` already clips overflow (style.css), so scaling the img
+   inside it can never cause layout shift or a horizontal scrollbar —
+   the transform is a paint-only effect entirely contained by the frame.
+   ===================================================================== */
+
+@keyframes m-kenburns {
+  from { transform: scale(1); }
+  to   { transform: scale(1.06); }
+}
+.m-hero-frame img {
+  animation: m-kenburns 24s var(--m-ease) infinite alternate;
+  transform-origin: center center;
+}
+
+/* =====================================================================
+   8. Header — polish the existing .is-stuck transition
+   Sticky mechanics and the class name are untouched (site.js owns those);
+   this only softens the curve and adds a touch more blur once stuck, an
+   effect that paints only and never affects layout.
+   ===================================================================== */
+
+.m-header {
+  transition: box-shadow .4s var(--m-ease), border-color .4s var(--m-ease),
+              background-color .4s var(--m-ease), backdrop-filter .4s var(--m-ease);
+}
+.m-header.is-stuck {
+  backdrop-filter: saturate(160%) blur(14px);
+}
+
+/* =====================================================================
+   9. Reduced motion — belt-and-suspenders
+   style.css already forces every transition/animation duration to .01ms
+   under `prefers-reduced-motion: reduce`, which neuters all of the above
+   in effect. This block additionally zeroes the specific transforms/
+   animations this file introduces, so nothing here is even nominally
+   "in motion" for a visitor who asked not to see it.
+   ===================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html.m-motion .m-reveal {
+    opacity: 1 !important;
+    translate: none !important;
+    transition: none !important;
+  }
+  a.m-card:hover, .m-card-hover:hover, .btn:active {
+    transform: none !important;
+  }
+  .m-hero-frame img { animation: none !important; }
+}

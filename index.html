@@ -1,186 +1,331 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn" data-page="home" data-title-key="title.home" data-desc-key="meta.home">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ghonar Chala High School</title>
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <style>
-        /* Minimal custom CSS for slider adjustments */
-        .carousel-item img {
-            height: 400px;
-            object-fit: cover;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1B2A4A">
+  <title>ঘোনার চালা উচ্চ বিদ্যালয় (Ghonar Chala High School) — সখিপুর, টাঙ্গাইল</title>
+  <meta name="description" content="ঘোনার চালা উচ্চ বিদ্যালয়, সখিপুর, টাঙ্গাইল — ১৯৮৫ সাল থেকে ষষ্ঠ থেকে দশম শ্রেণি পর্যন্ত বিজ্ঞান, ব্যবসায় শিক্ষা ও মানবিক বিভাগে পাঠদানরত একটি এমপিওভুক্ত মাধ্যমিক বিদ্যালয়।">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="assets/img/icon-192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="assets/img/icon-180.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Hind+Siliguri:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/anim.css" rel="stylesheet">
+  <script>
+    /* The markup ships Bangla, so only a reader who has chosen English needs
+       anything done before first paint. The window-load fallback makes sure the
+       page stays readable even if site.js never runs. */
+    (function () {
+      try {
+        if (window.localStorage.getItem('gc-modern-lang') === 'en') {
+          document.documentElement.setAttribute('lang', 'en');
+          document.documentElement.setAttribute('data-lang-pending', 'en');
         }
-        /* Ensure navbar collapse works smoothly */
-        .navbar-nav .nav-link {
-            color: white !important;
-        }
-        .navbar-nav .nav-link:hover {
-            text-decoration: underline;
-        }
-        /* Enhanced card styling */
-        .leadership-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 2px solid #007bff;
-            border-radius: 10px;
-        }
-        .leadership-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
-        }
-        /* Map styling */
-        .map-iframe {
-            width: 100%;
-            height: 300px;
-            border: 0;
-            border-radius: 10px;
-        }
-    </style>
+      } catch (e) { /* storage blocked */ }
+      window.addEventListener('load', function () {
+        document.documentElement.removeAttribute('data-lang-pending');
+      });
+    }());
+  </script>
 </head>
-<body class="bg-light font-sans">
-    <!-- Header -->
-    <header class="bg-primary text-white py-3">
-        <div class="container">
-            <nav class="navbar navbar-expand-md navbar-dark bg-primary">
-                <div class="container-fluid">
-                    <div>
-                        <h1 class="navbar-brand mb-0 fs-3">ঘোনার চালা উচ্চ বিদ্যালয়</h1>
-                        <p class="text-light mb-0 fs-5">Ghonar Chala High School</p>
-                        <p class="text-light mb-0 fs-6">EIIN: 114612</p>
-                    </div>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-                            <li class="nav-item"><a class="nav-link" href="admission.html">Admission</a></li>
-                            <li class="nav-item"><a class="nav-link" href="notices.html">Notices</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#leadership">Leadership</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                               </ul>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </header>
+<body>
+<a class="m-skip" href="#main" data-i18n="skip">মূল অংশে যান</a>
 
-    <!-- Photo Slider -->
-    <section id="carouselSection" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item">
-                <img src="./images/slider-1.jpg" class="d-block w-100" alt="School Events">
-            </div>
-            <div class="carousel-item active">
-                <img src="./images/slider-2.jpg" class="d-block w-100" alt="School Campus">
-            </div>
-            <div class="carousel-item">
-                <img src="./images/slider-3.jpg" class="d-block w-100" alt="Students Learning">
-            </div>
-            <div class="carousel-item">
-                <img src="./images/slider-4.jpg" class="d-block w-100" alt="School Events">
-            </div>
+<!-- header -->
+<div class="m-topbar">
+  <div class="container">
+    <div class="m-topbar-inner">
+      <span lang="en">EIIN 114612</span>
+      <span data-i18n="top.board">ঢাকা শিক্ষা বোর্ড</span>
+      <a class="ms-sm-auto d-inline-flex align-items-center gap-2" href="tel:+8801309114612"
+         aria-label="অফিসে ফোন করুন" data-i18n-aria="top.call">
+        <span class="d-inline-flex" data-icon="phone" style="width:14px;height:14px"></span>
+        <span lang="en">01309-114612</span>
+      </a>
+    </div>
+  </div>
+</div>
+<header class="m-header" data-header>
+  <nav class="navbar navbar-expand-xl py-0" aria-label="প্রধান মেনু" data-i18n-aria="nav.label">
+    <div class="container">
+      <a class="navbar-brand m-brand" href="index.html">
+        <img src="assets/img/crest.png" alt="" width="266" height="320">
+        <span>
+          <span class="m-brand-name d-block" data-i18n="brand.name">ঘোনার চালা উচ্চ বিদ্যালয়</span>
+          <span class="m-brand-sub d-block" data-i18n="brand.sub">সখিপুর, টাঙ্গাইল — প্রতিষ্ঠা ১৯৮৫</span>
+        </span>
+      </a>
+      <div class="d-flex align-items-center gap-2 order-xl-3">
+        <div class="m-lang" role="group" aria-label="ভাষা" data-i18n-aria="lang.label">
+          <button type="button" class="m-lang-bn" data-lang-btn="bn" aria-pressed="true"
+                  title="এই সাইটটি বাংলায় পড়ুন" data-i18n-title="lang.bnTitle">বাং</button>
+          <button type="button" data-lang-btn="en" aria-pressed="false"
+                  title="Read this site in English" data-i18n-title="lang.enTitle">EN</button>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselSection" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
+        <button class="navbar-toggler m-navbar-toggler d-xl-none" type="button"
+                data-bs-toggle="collapse" data-bs-target="#mNav" aria-controls="mNav"
+                aria-expanded="false" aria-label="মেনু খুলুন বা বন্ধ করুন" data-i18n-aria="nav.toggle">
+          <span class="d-inline-flex" data-icon="menu"></span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselSection" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </section>
+      </div>
+      <div class="collapse navbar-collapse order-xl-2" id="mNav">
+        <ul class="navbar-nav m-nav ms-xl-auto">
+          <li class="nav-item"><a class="nav-link" data-nav="home" href="index.html" data-i18n="nav.home">হোম</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-nav="institution" href="#" role="button"
+               data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav.institution">প্রতিষ্ঠান</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" data-nav="about" href="about.html" data-i18n="nav.about">পরিচিতি</a></li>
+              <li><a class="dropdown-item" data-nav="teachers" href="teachers.html" data-i18n="nav.teachers">শিক্ষকমণ্ডলী</a></li>
+              <li><a class="dropdown-item" data-nav="committee" href="committee.html" data-i18n="nav.committee">পরিচালনা পর্ষদ</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" data-nav="academics" href="academics.html" data-i18n="nav.academics">একাডেমিক</a></li>
+          <li class="nav-item"><a class="nav-link" data-nav="admissions" href="admission.html" data-i18n="nav.admissions">ভর্তি</a></li>
+          <li class="nav-item"><a class="nav-link" data-nav="news" href="notices.html" data-i18n="nav.news">নোটিশ</a></li>
+          <li class="nav-item"><a class="nav-link" data-nav="gallery" href="gallery.html" data-i18n="nav.gallery">গ্যালারি</a></li>
+          <li class="nav-item"><a class="nav-link" data-nav="contact" href="contact.html" data-i18n="nav.contact">যোগাযোগ</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+<!-- /header -->
 
-    <!-- About Section -->
-    <section id="about" class="py-5">
-        <div class="container">
-            <h2 class="text-center fw-bold mb-4 fs-2">About Our School</h2>
-            <p class="text-muted fs-5">
-                Ghonar Chala High School, established on January 10, 1985, is a distinguished non-government secondary school in Sakhipur, Tangail, Bangladesh. 
-                Located at Ghonar Chala Bazar, Kachua, the school operates under the Dhaka Education Board with an EIIN of 114612. Officially recognized on January 1, 1988, 
-                it offers education in Science, Business Studies, and Humanities. As part of the Monthly Pay Order (MPO) system, it receives government funding for teacher salaries. 
-                Situated in a rural plain land area, the school is committed to fostering academic excellence and moral values, supported by dedicated faculty and modern facilities.
-            </p>
+<main id="main" tabindex="-1">
+  <section class="m-hero m-hero-with-float">
+    <div class="container">
+      <div class="m-hero-frame">
+        <picture>
+          <source type="image/webp" srcset="assets/img/hero-2-700.webp 700w, assets/img/hero-2-1100.webp 1100w, assets/img/hero-2-1600.webp 1600w" sizes="(min-width: 1200px) 1140px, 100vw">
+          <img src="assets/img/hero-2-1600.jpg" srcset="assets/img/hero-2-700.jpg 700w, assets/img/hero-2-1100.jpg 1100w, assets/img/hero-2-1600.jpg 1600w" sizes="(min-width: 1200px) 1140px, 100vw" alt="Students and teachers of Ghonar Chala High School at a school ceremony" width="1600" height="900" loading="eager" fetchpriority="high">
+        </picture>
+        <div class="m-hero-body">
+          <span class="m-eyebrow" data-i18n="home.hero.eyebrow">প্রতিষ্ঠা ১৯৮৫</span>
+          <h1 class="m-display" data-i18n="home.hero.title">ঘরের কাছেই মানসম্মত শিক্ষা।</h1>
+          <p data-i18n="home.hero.text">চার দশক ধরে কাচুয়া ও সখিপুরের শিক্ষার্থীদের পাঠদান করে আসছে ঘোনার চালা উচ্চ বিদ্যালয় — ষষ্ঠ থেকে দশম শ্রেণি, তিনটি বিভাগ, আর একটিই অঙ্গীকার: প্রত্যেক শিক্ষার্থীর জন্য সমান সুযোগ।</p>
+          <div class="d-flex flex-wrap gap-3">
+            <a class="btn btn-brass btn-lg" href="admission.html" data-i18n="home.hero.cta1">ভর্তির তথ্য</a>
+            <a class="btn btn-outline-light btn-lg" href="notices.html" data-i18n="home.hero.cta2">সর্বশেষ নোটিশ</a>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- Leadership Section -->
-    <section id="leadership" class="bg-secondary bg-opacity-10 py-5">
-        <div class="container">
-            <h2 class="text-center fw-bold mb-4 fs-2">Our Leadership</h2>
-            <div class="row row-cols-1 row-cols-md-2 g-4">
-                <!-- Headmaster -->
-                <div class="col">
-                    <div class="card h-100 text-center shadow-sm leadership-card">
-                        <div class="card-body">
-                            <h3 class="card-title fw-semibold fs-4">Md. Nazrul Islam</h3>
-                            <p class="text-muted">Headmaster</p>
-                            <p class="card-text">
-                                With over 20 years of experience in education, Md. Nazrul Islam leads our school with a vision of academic excellence 
-                                and holistic development.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <!-- President of Managing Committee -->
-                <div class="col">
-                    <div class="card h-100 text-center shadow-sm leadership-card">
-                        <div class="card-body">
-                            <h3 class="card-title fw-semibold fs-4">Alhaj Amzad Hossen Master</h3>
-                            <p class="text-muted">President, Managing Committee</p>
-                            <p class="card-text">
-                                Former Assistant Head Teacher of Ghonar Chala High School and Ex-Chairman of Kalia Union Parishad.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+      <div class="m-stats-float">
+        <div class="row g-4 row-cols-2 row-cols-lg-4">
+          <div class="col">
+            <div class="m-stat">
+              <span class="m-stat-value" lang="en">1985</span>
+              <span class="m-stat-label" data-i18n="home.stat1">প্রতিষ্ঠাকাল</span>
             </div>
+          </div>
+          <div class="col">
+            <div class="m-stat">
+              <span class="m-stat-value" lang="en">1988</span>
+              <span class="m-stat-label" data-i18n="home.stat2">স্বীকৃতি</span>
+            </div>
+          </div>
+          <div class="col">
+            <div class="m-stat">
+              <span class="m-stat-value" data-i18n="home.stat3v">ষষ্ঠ – দশম</span>
+              <span class="m-stat-label" data-i18n="home.stat3">শ্রেণি</span>
+            </div>
+          </div>
+          <div class="col">
+            <div class="m-stat">
+              <span class="m-stat-value" data-i18n="home.stat4v">তিনটি</span>
+              <span class="m-stat-label" data-i18n="home.stat4">বিভাগ</span>
+            </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-5">
-        <div class="container">
-            <h2 class="text-center fw-bold mb-4 fs-2">Contact Us</h2>
-            <div class="row row-cols-1 row-cols-md-2 g-4">
-                <!-- Contact Details -->
-                <div class="col">
-                    <div class="card h-100 text-center shadow-sm">
-                        <div class="card-body">
-                            <h3 class="card-title fw-semibold fs-4">Get in Touch</h3>
-                            <p class="text-muted fs-5">
-                                Address: Ghonar Chala Bazar, Kachua, Sakhipur, Tangail-1951<br>
-                                Phone: 01966824398<br>
-                                Facebook: <a href="https://facebook.com/ghonarchalahighschoolofficial/" class="text-primary text-decoration-underline">Ghonar Chala High School Official</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Google Map -->
-                <div class="col">
-                    <div class="card h-100 text-center shadow-sm">
-                        <div class="card-body">
-                            <h3 class="card-title fw-semibold fs-4">Our Location</h3>
-                            <iframe class="map-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3634.3682702282426!2d90.19604380955415!3d24.368489078163012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x375611bb216872b7%3A0x4fb1b2e9e3c037ab!2sGhonar%20Chala%20High%20School!5e0!3m2!1sen!2sbd!4v1756655525553!5m2!1sen!2sbd"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
-                    </div>
-                </div>
-               </div>
+  <section class="m-section">
+    <div class="container">
+      <div class="row g-4 g-lg-5 align-items-center">
+        <div class="col-12 col-lg-6">
+          <span class="m-eyebrow" data-i18n="home.about.eyebrow">আমাদের পরিচয়</span>
+          <h2 data-i18n="home.about.title">এক গ্রামে চল্লিশ বছর, আজও এগিয়ে চলা</h2>
+          <hr class="m-rule">
+          <p class="m-lead" data-i18n="home.about.p1">১৯৮৫ সালের ১০ জানুয়ারি ঘোনার চালা বাজারে বিদ্যালয়টির যাত্রা শুরু হয় এবং তিন বছরের মাথায় এটি সরকারি স্বীকৃতি লাভ করে। বর্তমানে এটি মাধ্যমিক ও উচ্চ মাধ্যমিক শিক্ষা বোর্ড, ঢাকা-এর অধীনে পরিচালিত একটি এমপিওভুক্ত বেসরকারি মাধ্যমিক বিদ্যালয়।</p>
+          <p data-i18n="home.about.p2">ষষ্ঠ থেকে দশম শ্রেণি পর্যন্ত এনসিটিবি নির্ধারিত জাতীয় পাঠ্যসূচি অনুসরণ করা হয়। নবম ও দশম শ্রেণিতে শিক্ষার্থীরা বিজ্ঞান, ব্যবসায় শিক্ষা বা মানবিক বিভাগ বেছে নেয় এবং ঢাকা বোর্ডের অধীনে এসএসসি পরীক্ষায় অংশ নেয়।</p>
+          <a class="m-link" href="about.html">
+            <span data-i18n="home.about.cta">বিদ্যালয় সম্পর্কে বিস্তারিত</span>
+            <span class="d-inline-flex" data-icon="arrowRight"></span>
+          </a>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-primary text-white py-3">
-        <div class="container text-center">
-            <p>&copy; 2025 Ghonar Chala High School. All rights reserved.</p>
-            <p>Designed with ❤️ for education</p>
-            <p>Website enhanced by Grok, created by xAI</p>
+        <div class="col-12 col-lg-6">
+          <figure class="m-figure m-figure-wide">
+            <picture>
+              <source type="image/webp" srcset="assets/img/hero-1-700.webp 700w, assets/img/hero-1-1100.webp 1100w" sizes="(min-width: 992px) 540px, 100vw">
+              <img src="assets/img/hero-1-1100.jpg" srcset="assets/img/hero-1-700.jpg 700w, assets/img/hero-1-1100.jpg 1100w" sizes="(min-width: 992px) 540px, 100vw" alt="The main building of Ghonar Chala High School" width="1100" height="733" loading="lazy">
+            </picture>
+          </figure>
         </div>
-    </footer>
+      </div>
+    </div>
+  </section>
 
-    <!-- Bootstrap 5 JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <section class="m-section m-section-alt">
+    <div class="container">
+      <div class="m-section-head text-center">
+        <span class="m-eyebrow" data-i18n="home.pillars.eyebrow">আমাদের কার্যক্রম</span>
+        <h2 data-i18n="home.pillars.title">গ্রাম ছেড়ে না গিয়েই পূর্ণাঙ্গ মাধ্যমিক শিক্ষা</h2>
+        <hr class="m-rule">
+      </div>
+      <div class="row g-4">
+        <div class="col-12 col-md-4">
+          <div class="m-card h-100">
+            <span class="m-icon" data-icon="book"></span>
+            <h3 data-i18n="home.pillar1.title">তিনটি বিভাগ</h3>
+            <p class="m-muted" data-i18n="home.pillar1.text">নবম শ্রেণি থেকে বিজ্ঞান, ব্যবসায় শিক্ষা ও মানবিক — প্রতিটি বিভাগেই জাতীয় পাঠ্যসূচি অনুসরণ করে এসএসসি পরীক্ষার প্রস্তুতি।</p>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="m-card h-100">
+            <span class="m-icon" data-icon="people"></span>
+            <h3 data-i18n="home.pillar2.title">অভিজ্ঞ শিক্ষকমণ্ডলী</h3>
+            <p class="m-muted" data-i18n="home.pillar2.text">প্রধান শিক্ষক মোঃ নজরুল ইসলামের নেতৃত্বে একটি স্থায়ী এমপিওভুক্ত শিক্ষকমণ্ডলী এবং এলাকাবাসীর প্রতিনিধিত্বে গঠিত পরিচালনা পর্ষদ।</p>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="m-card h-100">
+            <span class="m-icon" data-icon="award"></span>
+            <h3 data-i18n="home.pillar3.title">প্রয়োজনীয় সুযোগ-সুবিধা</h3>
+            <p class="m-muted" data-i18n="home.pillar3.text">আলো-বাতাসপূর্ণ পাকা শ্রেণিকক্ষ, বিজ্ঞানাগার ও গ্রন্থাগার, খেলার মাঠ, বিশুদ্ধ খাবার পানি এবং ছাত্র-ছাত্রীদের জন্য পৃথক শৌচাগার।</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="m-section">
+    <div class="container">
+      <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
+        <div>
+          <span class="m-eyebrow" data-i18n="home.news.eyebrow">নোটিশ বোর্ড</span>
+          <h2 class="mb-0" data-i18n="home.news.title">সর্বশেষ নোটিশ</h2>
+        </div>
+        <a class="m-link" href="notices.html">
+          <span data-i18n="home.news.all">সব নোটিশ</span>
+          <span class="d-inline-flex" data-icon="arrowRight"></span>
+        </a>
+      </div>
+      <div class="m-card" data-home-notices>
+        <p class="m-muted mb-0" data-i18n="news.loading">নোটিশ লোড হচ্ছে…</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="m-section m-section-navy">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-12 col-lg-8">
+          <span class="m-eyebrow" data-i18n="home.cta.eyebrow">ভর্তি</span>
+          <h2 data-i18n="home.cta.title">২০২৬ শিক্ষাবর্ষের ভর্তি কার্যক্রম চলছে</h2>
+          <p class="m-lead mb-0" data-i18n="home.cta.text">আবেদন ফরম বিদ্যালয় অফিস থেকে সংগ্রহ করা যাবে। ভর্তি পরীক্ষা অনুষ্ঠিত হবে ডিসেম্বর মাসে — বিস্তারিত জানতে ফোন করুন বা ভর্তির নিয়মাবলি দেখুন।</p>
+        </div>
+        <div class="col-12 col-lg-4">
+          <div class="d-grid gap-2">
+            <a class="btn btn-brass" href="admission.html" data-i18n="home.cta.b1">ভর্তির নিয়মাবলি</a>
+            <a class="btn btn-outline-light" href="tel:+8801309114612" data-i18n="home.cta.b2">ফোন: 01309-114612</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="m-section-tight m-section-alt">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-12 col-lg-8">
+          <span class="m-eyebrow" data-i18n="home.visit.eyebrow">সরাসরি আসুন</span>
+          <h2 class="h3" data-i18n="home.visit.title">বিদ্যালয় পরিদর্শন</h2>
+          <p class="m-muted mb-0" data-i18n="home.visit.text">অফিস খোলা থাকে রবি থেকে বৃহস্পতিবার, সকাল ৯টা থেকে বিকাল ৪টা পর্যন্ত। পূর্ব অনুমতির প্রয়োজন নেই — যেকোনো সময় আসতে পারেন।</p>
+        </div>
+        <div class="col-12 col-lg-4 text-lg-end">
+          <a class="btn btn-outline-primary" href="contact.html" data-i18n="home.visit.cta">ঠিকানা ও যোগাযোগ</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- footer -->
+<footer class="m-footer">
+  <div class="container">
+    <div class="row g-4 g-lg-5">
+      <div class="col-12 col-lg-4">
+        <div class="m-footer-brand">
+          <img src="assets/img/crest-mono.png" alt="" width="266" height="320">
+          <span>
+            <strong data-i18n="brand.name">ঘোনার চালা উচ্চ বিদ্যালয়</strong>
+            <span data-i18n="brand.sub">সখিপুর, টাঙ্গাইল — প্রতিষ্ঠা ১৯৮৫</span>
+          </span>
+        </div>
+        <p data-i18n="footer.blurb">১৯৮৫ সাল থেকে সখিপুরের কাচুয়া অঞ্চলের শিক্ষার্থীদের জন্য নিবেদিত একটি স্বীকৃত মাধ্যমিক বিদ্যালয় — নিয়মিত পাঠদান, ছোট শ্রেণি এবং প্রত্যেক শিক্ষার্থীর জন্য সমান সুযোগ।</p>
+        <div class="m-social">
+          <a href="https://facebook.com/ghonarchalahighschoolofficial/" target="_blank" rel="noopener" aria-label="Facebook" data-icon="facebook"></a>
+          <a href="mailto:ghonarchalahighschool@gmail.com" aria-label="E-mail" data-icon="mail"></a>
+          <a href="tel:+8801309114612" aria-label="Telephone" data-icon="phone"></a>
+        </div>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h3 data-i18n="footer.explore">সাইটের পাতা</h3>
+        <ul>
+          <li><a href="index.html" data-i18n="nav.home">হোম</a></li>
+          <li><a href="about.html" data-i18n="nav.about">পরিচিতি</a></li>
+          <li><a href="teachers.html" data-i18n="nav.teachers">শিক্ষকমণ্ডলী</a></li>
+          <li><a href="committee.html" data-i18n="nav.committee">পরিচালনা পর্ষদ</a></li>
+          <li><a href="academics.html" data-i18n="nav.academics">একাডেমিক</a></li>
+          <li><a href="admission.html" data-i18n="nav.admissions">ভর্তি</a></li>
+          <li><a href="notices.html" data-i18n="nav.news">নোটিশ</a></li>
+          <li><a href="gallery.html" data-i18n="nav.gallery">গ্যালারি</a></li>
+          <li><a href="contact.html" data-i18n="nav.contact">যোগাযোগ</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-3">
+        <h3 data-i18n="footer.resources">গুরুত্বপূর্ণ লিংক</h3>
+        <ul>
+          <li><a href="https://moedu.gov.bd/" target="_blank" rel="noopener" data-i18n="link.ministry">শিক্ষা মন্ত্রণালয়</a></li>
+          <li><a href="https://dshe.gov.bd/" target="_blank" rel="noopener" data-i18n="link.dshe">মাধ্যমিক ও উচ্চশিক্ষা অধিদপ্তর</a></li>
+          <li><a href="https://dhakaeducationboard.gov.bd/" target="_blank" rel="noopener" data-i18n="link.board">ঢাকা শিক্ষা বোর্ড</a></li>
+          <li><a href="https://nctb.gov.bd/" target="_blank" rel="noopener" data-i18n="link.nctb">এনসিটিবি — পাঠ্যপুস্তক</a></li>
+          <li><a href="https://banbeis.gov.bd/" target="_blank" rel="noopener" data-i18n="link.banbeis">ব্যানবেইস</a></li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-3">
+        <h3 data-i18n="footer.contact">যোগাযোগ</h3>
+        <address data-i18n="fact.address.v">ঘোনার চালা বাজার, কাচুয়া, সখিপুর, টাঙ্গাইল-১৯৫১</address>
+        <ul>
+          <li><a href="tel:+8801309114612" lang="en">01309-114612</a></li>
+          <li><a href="tel:+8801966824398" lang="en">01966-824398</a></li>
+          <li><a href="mailto:ghonarchalahighschool@gmail.com" lang="en">ghonarchalahighschool@gmail.com</a></li>
+          <li><a href="https://facebook.com/ghonarchalahighschoolofficial/" target="_blank" rel="noopener" data-i18n="footer.facebook">ফেসবুক পেজ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="m-footer-bottom">
+      <span data-i18n="footer.rights">© ২০২৬ ঘোনার চালা উচ্চ বিদ্যালয়। সর্বস্বত্ব সংরক্ষিত।</span>
+      <span class="d-flex flex-wrap gap-3">
+        <span data-i18n="footer.meta">EIIN 114612 · ঢাকা শিক্ষা বোর্ড</span>
+      </span>
+    </div>
+  </div>
+</footer>
+<button class="m-top" type="button" data-top aria-label="উপরে ফিরে যান" data-i18n-aria="top.label"></button>
+<!-- /footer -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
+<script src="assets/js/site.js" defer></script>
+<script src="assets/js/motion.js" defer></script>
+<script src="assets/js/news.js" defer></script>
 </body>
 </html>

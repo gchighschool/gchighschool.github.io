@@ -1,0 +1,962 @@
+/* ==========================================================================
+   Ghonar Chala High School — theme
+   A Western independent-school register: serif display, sans body, calm
+   navy + brass on warm off-white. Loaded AFTER Bootstrap 5.3.3.
+   Self-contained: nothing here is shared with the root design.
+   ========================================================================== */
+
+/* ------------------------------------------------------------- 1. Tokens */
+
+:root {
+  --m-ink:        #1C2530;
+  --m-ink-soft:   #52606D;
+  --m-navy:       #1B2A4A;
+  --m-navy-dark:  #142038;
+  --m-navy-tint:  #EEF1F6;
+  --m-brass:      #B08D57;
+  --m-brass-dark: #8F7043;
+  --m-brass-tint: #F5EFE4;
+  --m-bg:         #FAF8F4;
+  --m-surface:    #FFFFFF;
+  --m-line:       #E4E0D8;
+
+  --m-serif: "Fraunces", "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --m-sans:  "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --m-bangla: "Hind Siliguri", "Noto Sans Bengali", var(--m-sans);
+
+  --m-radius:    16px;
+  --m-radius-lg: 26px;
+  --m-shadow:    0 1px 2px rgba(28, 37, 48, .04), 0 8px 24px rgba(28, 37, 48, .06);
+  --m-shadow-lg: 0 2px 6px rgba(28, 37, 48, .06), 0 24px 56px rgba(28, 37, 48, .11);
+  --m-shadow-float: 0 4px 10px rgba(28, 37, 48, .05), 0 30px 70px rgba(20, 32, 56, .16);
+
+  /* Bootstrap remap — theme colour only. Component vars are set explicitly
+     further down; --bs-primary alone does NOT retheme .btn-primary. */
+  --bs-primary: #1B2A4A;
+  --bs-primary-rgb: 27, 42, 74;
+  --bs-body-color: #1C2530;
+  --bs-body-bg: #FAF8F4;
+  --bs-body-font-family: var(--m-sans);
+  --bs-link-color: #1B2A4A;
+  --bs-link-color-rgb: 27, 42, 74;
+  --bs-link-hover-color: #B08D57;
+  --bs-link-hover-color-rgb: 176, 141, 87;
+  --bs-border-color: #E4E0D8;
+  --bs-emphasis-color: #1C2530;
+  --bs-focus-ring-color: rgba(176, 141, 87, .35);
+}
+
+/* -------------------------------------------------------- 2. Base typography */
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
+body {
+  background: var(--m-bg);
+  color: var(--m-ink);
+  font-family: var(--m-sans);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+body > main { flex: 1 0 auto; }
+
+/* The header is sticky, so anything scrolled to by id — the skip link's
+   target included — needs clearance or it lands underneath it. */
+#main, [id] { scroll-margin-top: 6rem; }
+
+/* Bangla mode: swap the body face, keep the serif display for headings off —
+   Fraunces has no Bengali coverage, so headings fall back to Hind Siliguri. */
+html[lang="bn"] body,
+html[lang="bn"] .m-display,
+html[lang="bn"] h1, html[lang="bn"] h2, html[lang="bn"] h3,
+html[lang="bn"] h4, html[lang="bn"] h5, html[lang="bn"] h6 {
+  font-family: var(--m-bangla);
+}
+html[lang="bn"] .m-display { letter-spacing: 0; }
+/* Latin-only runs (EIIN, phone, e-mail) keep the sans face in both modes. */
+[lang="en"] { font-family: var(--m-sans); }
+
+::selection { background: var(--m-brass); color: #fff; }
+
+h1, h2, h3, h4, h5, h6, .m-display {
+  font-family: var(--m-serif);
+  /* Fraunces is variable: let it use its display optical size at large sizes. */
+  font-variation-settings: "opsz" 96;
+  font-weight: 600;
+  color: var(--m-ink);
+  letter-spacing: -.015em;
+  line-height: 1.2;
+}
+
+.m-display {
+  font-size: clamp(2.25rem, 1.4rem + 3.4vw, 4rem);
+  font-weight: 600;
+  line-height: 1.08;
+}
+
+.m-eyebrow {
+  font-family: var(--m-sans);
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--m-brass-dark);
+  margin-bottom: .85rem;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+.m-eyebrow::before {
+  content: "";
+  width: 22px;
+  height: 1.5px;
+  background: currentColor;
+  flex: 0 0 auto;
+  opacity: .8;
+}
+.text-center .m-eyebrow { justify-content: center; }
+html[lang="bn"] .m-eyebrow { letter-spacing: .06em; text-transform: none; }
+
+.m-lead {
+  font-size: 1.1875rem;
+  line-height: 1.7;
+  color: var(--m-ink-soft);
+}
+
+.m-muted { color: var(--m-ink-soft); }
+
+a { text-decoration-thickness: 1px; text-underline-offset: .18em; }
+
+:focus-visible {
+  outline: 2px solid var(--m-brass);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.m-skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 1080;
+  background: var(--m-navy);
+  color: #fff;
+  padding: .75rem 1.25rem;
+  border-radius: 0 0 var(--m-radius) 0;
+}
+.m-skip:focus { left: 0; color: #fff; }
+
+/* ----------------------------------------------------------- 3. Sections */
+
+.m-section { padding: clamp(3.5rem, 2rem + 5vw, 6rem) 0; }
+.m-section-tight { padding: clamp(2.5rem, 1.5rem + 3vw, 4rem) 0; }
+.m-section-alt { background: var(--m-surface); }
+.m-section-navy {
+  background:
+    radial-gradient(120% 130% at 85% 0%, rgba(176, 141, 87, .16) 0%, rgba(176, 141, 87, 0) 55%),
+    linear-gradient(160deg, #22345A 0%, var(--m-navy) 45%, var(--m-navy-dark) 100%);
+  color: #E7EBF2;
+}
+.m-section-navy h1, .m-section-navy h2, .m-section-navy h3 { color: #fff; }
+.m-section-navy .m-eyebrow { color: var(--m-brass); }
+.m-section-navy .m-lead, .m-section-navy .m-muted { color: rgba(231, 235, 242, .78); }
+
+.m-section-head { max-width: 46rem; margin-bottom: 2.75rem; }
+.m-section-head.text-center { margin-left: auto; margin-right: auto; }
+.m-section-head h2 { font-size: clamp(1.75rem, 1.3rem + 1.6vw, 2.5rem); margin-bottom: .75rem; }
+
+.m-rule {
+  width: 48px;
+  height: 2px;
+  background: var(--m-brass);
+  border: 0;
+  opacity: 1;
+  margin: 0 0 1.5rem;
+}
+.text-center .m-rule { margin-left: auto; margin-right: auto; }
+
+/* -------------------------------------------------------------- 4. Header */
+
+.m-header {
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  background: rgba(250, 248, 244, .92);
+  backdrop-filter: saturate(150%) blur(10px);
+  border-bottom: 1px solid transparent;
+  transition: box-shadow .25s ease, border-color .25s ease, background-color .25s ease;
+}
+.m-header.is-stuck {
+  border-bottom-color: var(--m-line);
+  box-shadow: 0 6px 24px rgba(28, 37, 48, .07);
+}
+
+.m-topbar {
+  background: var(--m-navy);
+  color: rgba(231, 235, 242, .85);
+  font-size: .82rem;
+}
+.m-topbar a { color: rgba(231, 235, 242, .85); text-decoration: none; }
+.m-topbar a:hover { color: #fff; text-decoration: underline; }
+.m-topbar .m-topbar-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .35rem 1.5rem;
+  padding: .5rem 0;
+}
+
+.m-brand {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  text-decoration: none;
+  color: inherit;
+  padding: .9rem 0;
+}
+/* The crest is taller than wide (0.83), so height drives and width follows. */
+.m-brand img { width: auto; height: 52px; flex: 0 0 auto; }
+.m-brand-name {
+  font-family: var(--m-serif);
+  font-weight: 600;
+  font-size: 1.18rem;
+  line-height: 1.15;
+  color: var(--m-ink);
+  letter-spacing: -.02em;
+}
+html[lang="bn"] .m-brand-name { font-family: var(--m-bangla); font-size: 1.1rem; }
+.m-brand-sub {
+  font-family: var(--m-sans);
+  font-size: .72rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--m-ink-soft);
+}
+html[lang="bn"] .m-brand-sub { letter-spacing: .02em; text-transform: none; }
+
+.m-nav .nav-link {
+  font-size: .95rem;
+  font-weight: 500;
+  color: var(--m-ink);
+  padding: .5rem .95rem;
+  position: relative;
+}
+.m-nav .nav-link::after {
+  content: "";
+  position: absolute;
+  left: .95rem;
+  right: .95rem;
+  bottom: .18rem;
+  height: 1.5px;
+  background: var(--m-brass);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .22s ease;
+}
+.m-nav .nav-link:hover::after,
+.m-nav .nav-link:focus-visible::after { transform: scaleX(1); }
+.m-nav .nav-link[aria-current="page"] { color: var(--m-navy); font-weight: 600; }
+.m-nav .nav-link[aria-current="page"]::after { transform: scaleX(1); }
+
+.m-navbar-toggler {
+  border: 1px solid var(--m-line);
+  border-radius: 10px;
+  padding: .4rem .6rem;
+  background: var(--m-surface);
+  color: var(--m-ink);
+  line-height: 1;
+}
+.m-navbar-toggler:focus-visible { outline: 2px solid var(--m-brass); outline-offset: 2px; }
+
+/* The nav collapses at xl, not lg: seven Bangla labels plus the brand and the
+   language pill do not fit a 992px container. */
+@media (max-width: 1199.98px) {
+  .m-nav { padding: .5rem 0 1rem; border-top: 1px solid var(--m-line); margin-top: .25rem; }
+  .m-nav .nav-link { padding: .6rem .25rem; }
+  .m-nav .nav-link::after { left: .25rem; right: .25rem; }
+}
+
+/* ---- dropdown ---- */
+
+.m-nav .dropdown-toggle::after {
+  margin-left: .35rem;
+  vertical-align: .15em;
+  border-top-color: currentColor;
+  opacity: .55;
+}
+.m-nav .dropdown-menu {
+  --bs-dropdown-bg: var(--m-surface);
+  --bs-dropdown-border-color: var(--m-line);
+  --bs-dropdown-border-radius: var(--m-radius);
+  --bs-dropdown-link-color: var(--m-ink);
+  --bs-dropdown-link-hover-bg: var(--m-brass-tint);
+  --bs-dropdown-link-hover-color: var(--m-brass-dark);
+  --bs-dropdown-link-active-bg: var(--m-navy-tint);
+  --bs-dropdown-link-active-color: var(--m-navy);
+  --bs-dropdown-padding-y: .5rem;
+  --bs-dropdown-item-padding-y: .5rem;
+  --bs-dropdown-item-padding-x: 1.1rem;
+  --bs-dropdown-font-size: .95rem;
+  box-shadow: var(--m-shadow-lg);
+  margin-top: .35rem;
+  min-width: 14rem;
+}
+.m-nav .dropdown-item { font-weight: 500; border-radius: 8px; }
+.m-nav .dropdown-item[aria-current="page"] {
+  background: var(--m-navy-tint);
+  color: var(--m-navy);
+  font-weight: 600;
+}
+@media (max-width: 1199.98px) {
+  /* Inside the collapsed menu the dropdown reads as an indented sub-list
+     rather than a floating panel. */
+  .m-nav .dropdown-menu {
+    border: 0;
+    box-shadow: none;
+    padding-left: .9rem;
+    margin: 0 0 .25rem;
+    background: transparent;
+    min-width: 0;
+  }
+  .m-nav .dropdown-item { padding-left: .25rem; }
+}
+
+/* Language toggle pill */
+.m-lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  border: 1px solid var(--m-line);
+  background: var(--m-surface);
+  border-radius: 999px;
+  padding: 2px;
+  font-family: var(--m-sans);
+}
+.m-lang button {
+  border: 0;
+  background: transparent;
+  color: var(--m-ink-soft);
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  padding: .3rem .7rem;
+  border-radius: 999px;
+  cursor: pointer;
+  line-height: 1.4;
+  transition: background-color .18s ease, color .18s ease;
+}
+.m-lang button[aria-pressed="true"] {
+  background: var(--m-navy);
+  color: #fff;
+}
+.m-lang button:hover:not([aria-pressed="true"]) { color: var(--m-ink); }
+.m-lang button:focus-visible { outline: 2px solid var(--m-brass); outline-offset: 1px; }
+.m-lang .m-lang-bn { font-family: var(--m-bangla); }
+
+/* --------------------------------------------------------------- 5. Hero */
+
+.m-hero { padding: clamp(1.5rem, 1rem + 2vw, 2.5rem) 0 clamp(2.5rem, 1.5rem + 3vw, 4rem); }
+
+.m-hero-frame {
+  position: relative;
+  border-radius: var(--m-radius-lg);
+  overflow: hidden;
+  background: var(--m-navy-dark);
+  min-height: clamp(24rem, 18rem + 22vw, 34rem);
+  display: flex;
+  align-items: flex-end;
+  box-shadow: var(--m-shadow-lg);
+}
+.m-hero-frame img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.m-hero-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* Two washes: a horizontal one that anchors the left-aligned copy against a
+     busy photograph, and a vertical one that grounds the card overlapping the
+     bottom edge. The right side of the picture stays legible. */
+  background:
+    linear-gradient(90deg, rgba(20, 32, 56, .78) 0%, rgba(20, 32, 56, .52) 62%, rgba(20, 32, 56, .22) 100%),
+    linear-gradient(180deg, rgba(20, 32, 56, .28) 0%, rgba(20, 32, 56, .42) 45%, rgba(20, 32, 56, .82) 100%);
+}
+.m-hero-body {
+  position: relative;
+  z-index: 1;
+  padding: clamp(1.75rem, 1rem + 3vw, 3.5rem);
+  max-width: 46rem;
+  color: #fff;
+}
+.m-hero-body .m-display { color: #fff; }
+.m-hero-body .m-eyebrow { color: var(--m-brass); }
+.m-hero-body p { color: rgba(255, 255, 255, .86); font-size: 1.125rem; margin-bottom: 1.75rem; }
+
+/* A stats card that rides up over the bottom edge of the hero image — the
+   overlap is what makes the section read as layered rather than stacked. */
+.m-hero-with-float { padding-bottom: 0; }
+/* The frame is a flex column ending at flex-end, so extra bottom padding is
+   what lifts the hero copy clear of the card riding over it. */
+.m-hero-with-float .m-hero-frame { padding-bottom: clamp(3.5rem, 1.5rem + 7vw, 6.5rem); }
+
+.m-stats-float {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 62rem);
+  margin: clamp(-4.5rem, -3rem - 2vw, -2.5rem) auto 0;
+  background: var(--m-surface);
+  border: 1px solid var(--m-line);
+  border-radius: var(--m-radius);
+  box-shadow: var(--m-shadow-float);
+  padding: clamp(1.4rem, 1rem + 1.5vw, 2.25rem);
+}
+
+.m-page-head {
+  background:
+    radial-gradient(110% 140% at 88% 0%, rgba(176, 141, 87, .18) 0%, rgba(176, 141, 87, 0) 58%),
+    linear-gradient(160deg, #22345A 0%, var(--m-navy) 50%, var(--m-navy-dark) 100%);
+  color: #fff;
+  padding: clamp(3rem, 2rem + 4vw, 5rem) 0 clamp(2.5rem, 1.75rem + 3vw, 4rem);
+}
+.m-page-head h1 { color: #fff; font-size: clamp(2rem, 1.5rem + 2.2vw, 3.15rem); margin-bottom: .85rem; }
+.m-page-head .m-eyebrow { color: var(--m-brass); }
+.m-page-head p { color: rgba(231, 235, 242, .8); max-width: 42rem; font-size: 1.1rem; margin-bottom: 0; }
+
+.m-crumb { font-size: .85rem; margin-bottom: 1.25rem; }
+.m-crumb a { color: rgba(231, 235, 242, .75); text-decoration: none; }
+.m-crumb a:hover { color: #fff; text-decoration: underline; }
+.m-crumb span { color: rgba(231, 235, 242, .5); }
+.m-crumb .m-crumb-sep { padding: 0 .45rem; }
+
+/* -------------------------------------------------------------- 6. Cards */
+
+.m-card {
+  background: var(--m-surface);
+  border: 1px solid var(--m-line);
+  border-radius: var(--m-radius);
+  padding: 1.75rem;
+  box-shadow: var(--m-shadow);
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+.m-card h3 { font-size: 1.25rem; margin-bottom: .6rem; }
+.m-card p:last-child { margin-bottom: 0; }
+
+/* Interactive cards only — a plain .m-card must not float on hover. */
+a.m-card, .m-card-hover { text-decoration: none; color: inherit; display: block; }
+a.m-card:hover, .m-card-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--m-shadow-lg);
+  border-color: #D6CFC0;
+}
+
+/* NOTE: h-100 belongs on the card ONLY when the card is its column's sole
+   child. Where a heading shares the column, wrap in .m-fill instead — a card
+   with height:100% next to a heading overflows its row. */
+.m-fill { display: flex; flex-direction: column; height: 100%; }
+.m-fill > .m-card { flex: 1 1 auto; }
+
+.m-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: var(--m-brass-tint);
+  color: var(--m-brass-dark);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.1rem;
+}
+.m-icon svg { width: 22px; height: 22px; }
+.m-icon-navy { background: var(--m-navy-tint); color: var(--m-navy); }
+
+/* --------------------------------------------------------------- 7. Stats */
+
+.m-stat {
+  border-left: 2px solid var(--m-brass);
+  padding-left: 1.15rem;
+}
+.m-stat-value {
+  font-family: var(--m-serif);
+  font-size: clamp(1.9rem, 1.5rem + 1.4vw, 2.6rem);
+  font-weight: 600;
+  line-height: 1.05;
+  color: var(--m-ink);
+  display: block;
+}
+.m-section-navy .m-stat-value { color: #fff; }
+.m-stat-label {
+  font-size: .8rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--m-ink-soft);
+  margin-top: .4rem;
+  display: block;
+}
+html[lang="bn"] .m-stat-label { letter-spacing: .02em; text-transform: none; font-size: .875rem; }
+.m-section-navy .m-stat-label { color: rgba(231, 235, 242, .7); }
+
+/* ------------------------------------------------------------- 8. Buttons */
+
+/* .btn-primary is rethemed through its OWN component variables — remapping
+   --bs-primary is not enough. */
+.btn { border-radius: 999px; font-weight: 600; font-size: .95rem; padding: .65rem 1.6rem; }
+.btn-lg { padding: .8rem 2rem; font-size: 1rem; }
+.btn-sm { padding: .45rem 1.15rem; font-size: .85rem; }
+
+.btn-primary {
+  --bs-btn-bg: var(--m-navy);
+  --bs-btn-border-color: var(--m-navy);
+  --bs-btn-color: #fff;
+  --bs-btn-hover-bg: var(--m-navy-dark);
+  --bs-btn-hover-border-color: var(--m-navy-dark);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-active-bg: var(--m-navy-dark);
+  --bs-btn-active-border-color: var(--m-navy-dark);
+  --bs-btn-active-color: #fff;
+  --bs-btn-disabled-bg: var(--m-navy);
+  --bs-btn-disabled-border-color: var(--m-navy);
+  --bs-btn-focus-shadow-rgb: 176, 141, 87;
+}
+
+.btn-brass {
+  --bs-btn-bg: var(--m-brass);
+  --bs-btn-border-color: var(--m-brass);
+  --bs-btn-color: #fff;
+  --bs-btn-hover-bg: var(--m-brass-dark);
+  --bs-btn-hover-border-color: var(--m-brass-dark);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-active-bg: var(--m-brass-dark);
+  --bs-btn-active-border-color: var(--m-brass-dark);
+  --bs-btn-active-color: #fff;
+  --bs-btn-focus-shadow-rgb: 27, 42, 74;
+}
+
+.btn-outline-primary {
+  --bs-btn-color: var(--m-navy);
+  --bs-btn-border-color: var(--m-navy);
+  --bs-btn-hover-bg: var(--m-navy);
+  --bs-btn-hover-border-color: var(--m-navy);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-active-bg: var(--m-navy);
+  --bs-btn-active-border-color: var(--m-navy);
+  --bs-btn-focus-shadow-rgb: 176, 141, 87;
+}
+
+.btn-outline-light {
+  --bs-btn-color: #fff;
+  --bs-btn-border-color: rgba(255, 255, 255, .55);
+  --bs-btn-hover-bg: #fff;
+  --bs-btn-hover-color: var(--m-navy);
+  --bs-btn-hover-border-color: #fff;
+  --bs-btn-focus-shadow-rgb: 255, 255, 255;
+}
+
+.m-link {
+  font-weight: 600;
+  font-size: .95rem;
+  color: var(--m-navy);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+}
+.m-link svg { width: 15px; height: 15px; transition: transform .2s ease; }
+.m-link:hover { color: var(--m-brass-dark); }
+.m-link:hover svg { transform: translateX(3px); }
+.m-section-navy .m-link { color: var(--m-brass); }
+.m-section-navy .m-link:hover { color: #fff; }
+
+/* -------------------------------------------------------------- 9. Notices */
+
+.m-notice {
+  display: flex;
+  gap: 1.35rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--m-line);
+  text-decoration: none;
+  color: inherit;
+  align-items: flex-start;
+}
+.m-notice:first-child { padding-top: 0; }
+.m-notice:last-child { border-bottom: 0; }
+.m-notice:hover .m-notice-title { color: var(--m-brass-dark); }
+
+.m-date-chip {
+  flex: 0 0 auto;
+  width: 62px;
+  text-align: center;
+  background: var(--m-navy-tint);
+  border-radius: 10px;
+  padding: .55rem .25rem;
+  line-height: 1.1;
+}
+.m-date-chip .m-date-day {
+  font-family: var(--m-serif);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--m-navy);
+  display: block;
+}
+.m-date-chip .m-date-mon {
+  font-size: .68rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--m-ink-soft);
+  display: block;
+  margin-top: .15rem;
+}
+html[lang="bn"] .m-date-chip .m-date-day,
+html[lang="bn"] .m-date-chip .m-date-mon { font-family: var(--m-bangla); }
+html[lang="bn"] .m-date-chip .m-date-mon { letter-spacing: 0; text-transform: none; }
+
+.m-notice-title {
+  font-family: var(--m-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.35;
+  margin: 0 0 .35rem;
+  transition: color .18s ease;
+}
+html[lang="bn"] .m-notice-title { font-family: var(--m-bangla); }
+.m-notice-meta { font-size: .85rem; color: var(--m-ink-soft); margin: 0; }
+
+.m-notice-summary {
+  font-size: .95rem;
+  color: var(--m-ink-soft);
+  margin: 0 0 .5rem;
+  max-width: 46rem;
+}
+.m-notice-meta > * { vertical-align: middle; }
+.m-notice-meta time { margin-left: .35rem; }
+
+.m-tag {
+  display: inline-block;
+  font-family: var(--m-sans);
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: .18rem .6rem;
+  border-radius: 999px;
+  background: var(--m-brass-tint);
+  color: var(--m-brass-dark);
+  vertical-align: middle;
+}
+html[lang="bn"] .m-tag { letter-spacing: 0; text-transform: none; font-family: var(--m-bangla); }
+.m-tag-pin { background: var(--m-navy-tint); color: var(--m-navy); }
+
+/* Notice body (block renderer output) */
+.m-prose { max-width: 42rem; }
+.m-prose p { margin-bottom: 1.15rem; }
+.m-prose h2 { font-size: 1.4rem; margin: 2.25rem 0 .9rem; }
+.m-prose ul { padding-left: 1.15rem; margin-bottom: 1.25rem; }
+.m-prose li { margin-bottom: .5rem; }
+.m-prose strong { font-weight: 600; color: var(--m-ink); }
+
+/* --------------------------------------------------------------- 10. Misc */
+
+.m-figure {
+  border-radius: var(--m-radius);
+  overflow: hidden;
+  box-shadow: var(--m-shadow);
+  background: var(--m-navy-tint);
+  margin: 0;
+}
+.m-figure img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.m-figure-tall { aspect-ratio: 4 / 5; }
+.m-figure-wide { aspect-ratio: 3 / 2; }
+
+.m-facts { width: 100%; border-collapse: collapse; }
+.m-facts th, .m-facts td {
+  padding: .7rem 0;
+  border-bottom: 1px solid var(--m-line);
+  vertical-align: top;
+  font-size: .95rem;
+}
+.m-facts th {
+  text-align: left;
+  font-family: var(--m-sans);
+  font-weight: 500;
+  color: var(--m-ink-soft);
+  width: 45%;
+  padding-right: 1rem;
+}
+.m-facts td { font-weight: 500; }
+.m-facts tr:last-child th, .m-facts tr:last-child td { border-bottom: 0; }
+
+.m-steps { list-style: none; counter-reset: step; padding: 0; margin: 0; }
+.m-steps li {
+  counter-increment: step;
+  position: relative;
+  padding-left: 3.25rem;
+  padding-bottom: 1.75rem;
+  border-left: 1px solid var(--m-line);
+  margin-left: 1.1rem;
+}
+.m-steps li:last-child { border-left-color: transparent; padding-bottom: 0; }
+.m-steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: -1.1rem;
+  top: -.15rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  background: var(--m-navy);
+  color: #fff;
+  font-family: var(--m-serif);
+  font-size: .95rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+html[lang="bn"] .m-steps li::before { font-family: var(--m-bangla); }
+.m-steps h3 { font-size: 1.1rem; margin-bottom: .35rem; }
+.m-steps p { margin-bottom: 0; color: var(--m-ink-soft); font-size: .98rem; }
+
+.m-check { list-style: none; padding: 0; margin: 0; }
+.m-check li {
+  position: relative;
+  padding-left: 1.85rem;
+  margin-bottom: .7rem;
+}
+.m-check li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .52em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--m-brass);
+}
+
+.m-map {
+  border: 0;
+  width: 100%;
+  height: 380px;
+  border-radius: var(--m-radius);
+  display: block;
+}
+
+.m-contact-list { list-style: none; padding: 0; margin: 0; }
+.m-contact-list li { display: flex; gap: .9rem; align-items: flex-start; margin-bottom: 1.35rem; }
+.m-contact-list li:last-child { margin-bottom: 0; }
+.m-contact-list svg { width: 18px; height: 18px; flex: 0 0 auto; margin-top: .3rem; color: var(--m-brass-dark); }
+.m-contact-list a { color: var(--m-ink); text-decoration: none; }
+.m-contact-list a:hover { color: var(--m-brass-dark); text-decoration: underline; }
+.m-contact-label {
+  display: block;
+  font-size: .74rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--m-ink-soft);
+  margin-bottom: .1rem;
+}
+html[lang="bn"] .m-contact-label { letter-spacing: 0; text-transform: none; font-size: .85rem; }
+
+.m-empty {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--m-ink-soft);
+  border: 1px dashed var(--m-line);
+  border-radius: var(--m-radius);
+}
+
+/* ------------------------------------------------- 10b. People & lightbox */
+
+/* Roster avatar: the person's photograph, or their initials when `photo` is
+   empty in teachers.json / committee.json. */
+.m-avatar {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: var(--m-navy-tint);
+  color: var(--m-navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--m-serif);
+  font-weight: 600;
+  font-size: 1.35rem;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+html[lang="bn"] .m-avatar { font-family: var(--m-bangla); }
+.m-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Gallery lightbox. The DOM is built by gallery.js; only the initial
+   `display:none` stays inline, because the script uses it as its open flag. */
+.m-lightbox-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background: rgba(20, 32, 56, .92);
+}
+.m-lightbox {
+  position: relative;
+  width: 100%;
+  max-width: min(94vw, 1080px);
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--m-bg);
+  border: 1px solid var(--m-line);
+  border-radius: var(--m-radius-lg);
+  box-shadow: var(--m-shadow-lg);
+}
+.m-lightbox-stage {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--m-navy-dark);
+}
+.m-lightbox-img {
+  display: block;
+  max-width: 100%;
+  max-height: 78vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+.m-lightbox-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .5rem 1rem;
+  padding: .9rem 1.25rem;
+  border-top: 1px solid var(--m-line);
+  background: var(--m-bg);
+}
+.m-lightbox-caption { margin: 0; color: var(--m-ink); font-weight: 500; }
+.m-lightbox-pos { margin: 0; color: var(--m-ink-soft); font-size: .85rem; white-space: nowrap; }
+
+.m-lightbox-btn {
+  position: absolute;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, .35);
+  background: var(--m-navy);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+  box-shadow: var(--m-shadow);
+  transition: background-color .2s ease, border-color .2s ease, transform .2s ease;
+}
+.m-lightbox-btn:hover { background: var(--m-brass); border-color: var(--m-brass); }
+.m-lightbox-btn svg { width: 18px; height: 18px; }
+.m-lightbox-close { top: .75rem; right: .75rem; }
+.m-lightbox-prev { top: 50%; left: .75rem; transform: translateY(-50%); }
+.m-lightbox-next { top: 50%; right: .75rem; transform: translateY(-50%); }
+.m-lightbox-prev:hover, .m-lightbox-next:hover { transform: translateY(-50%) scale(1.06); }
+.m-lightbox-close:hover { transform: scale(1.06); }
+
+/* -------------------------------------------------------------- 11. Footer */
+
+.m-footer {
+  background: var(--m-navy-dark);
+  border-top: 2px solid var(--m-brass);
+  color: rgba(231, 235, 242, .72);
+  padding: clamp(3rem, 2rem + 3vw, 4.5rem) 0 0;
+  font-size: .93rem;
+  flex-shrink: 0;
+}
+.m-footer h3 {
+  color: #fff;
+  font-family: var(--m-sans);
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  margin-bottom: 1.1rem;
+}
+html[lang="bn"] .m-footer h3 { letter-spacing: .02em; text-transform: none; font-size: .95rem; font-family: var(--m-bangla); }
+.m-footer ul { list-style: none; padding: 0; margin: 0; }
+.m-footer li { margin-bottom: .55rem; }
+.m-footer a { color: rgba(231, 235, 242, .72); text-decoration: none; }
+.m-footer a:hover { color: #fff; text-decoration: underline; }
+.m-footer-brand { display: flex; align-items: center; gap: .85rem; margin-bottom: 1.1rem; }
+.m-footer-brand img { width: auto; height: 56px; }
+.m-footer-brand strong { color: #fff; font-family: var(--m-serif); font-weight: 600; font-size: 1.1rem; display: block; }
+html[lang="bn"] .m-footer-brand strong { font-family: var(--m-bangla); }
+.m-footer-brand span { font-size: .8rem; letter-spacing: .06em; }
+.m-footer-bottom {
+  border-top: 1px solid rgba(231, 235, 242, .14);
+  margin-top: 3rem;
+  padding: 1.35rem 0;
+  font-size: .84rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem 1.5rem;
+  justify-content: space-between;
+}
+.m-footer address { margin-bottom: 1rem; line-height: 1.6; }
+
+.m-social { display: flex; gap: .6rem; margin-top: 1.25rem; }
+.m-social a {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(231, 235, 242, .22);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color .2s ease, border-color .2s ease;
+}
+.m-social a:hover { background: var(--m-brass); border-color: var(--m-brass); }
+.m-social svg { width: 17px; height: 17px; }
+
+/* Back-to-top */
+.m-top {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--m-line);
+  background: var(--m-surface);
+  color: var(--m-navy);
+  box-shadow: var(--m-shadow);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity .25s ease, transform .25s ease, visibility .25s;
+  z-index: 1020;
+}
+.m-top.is-on { opacity: 1; visibility: visible; transform: none; }
+.m-top svg { width: 18px; height: 18px; }
+
+/* Language-swap flicker guard. The markup ships English, so only a returning
+   Bangla reader would see a flash of the wrong language. The inline head
+   script sets data-lang-pending="bn" in that one case; site.js clears it once
+   the dictionary is applied, and a window-load fallback clears it even if
+   site.js never runs. */
+html[data-lang-pending] [data-i18n] { visibility: hidden; }

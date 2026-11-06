@@ -1,0 +1,45 @@
+{
+  "_note": "To add a photo: drop the new original image into images/ at the repo root, then run `bash tools/make-gallery.sh` from the repo root to generate its thumb (WebP, assets/img/gallery/thumb/) and full-size (JPEG, assets/img/gallery/full/) versions. Then append an entry below with the matching id/thumb/full paths and a bilingual caption. Order here is display order.",
+  "photos": [
+    {
+      "id": "slider-1",
+      "thumb": "assets/img/gallery/thumb/slider-1.webp",
+      "full": "assets/img/gallery/full/slider-1.jpg",
+      "width": 720,
+      "height": 540,
+      "caption": { "en": "The school's main building", "bn": "বিদ্যালয়ের মূল ভবন" }
+    },
+    {
+      "id": "slider-2",
+      "thumb": "assets/img/gallery/thumb/slider-2.webp",
+      "full": "assets/img/gallery/full/slider-2.jpg",
+      "width": 1280,
+      "height": 605,
+      "caption": { "en": "Reception for high-achieving SSC students", "bn": "এসএসসি কৃতি শিক্ষার্থী সংবর্ধনা" }
+    },
+    {
+      "id": "slider-3",
+      "thumb": "assets/img/gallery/thumb/slider-3.webp",
+      "full": "assets/img/gallery/full/slider-3.jpg",
+      "width": 1600,
+      "height": 1200,
+      "caption": { "en": "Students at the daily assembly", "bn": "প্রাত্যহিক সমাবেশে শিক্ষার্থীরা" }
+    },
+    {
+      "id": "slider-4",
+      "thumb": "assets/img/gallery/thumb/slider-4.webp",
+      "full": "assets/img/gallery/full/slider-4.jpg",
+      "width": 1600,
+      "height": 1200,
+      "caption": { "en": "Students gathered in the school grounds", "bn": "বিদ্যালয় প্রাঙ্গণে শিক্ষার্থীদের সমাবেশ" }
+    },
+    {
+      "id": "admission-25",
+      "thumb": "assets/img/gallery/thumb/admission-25.webp",
+      "full": "assets/img/gallery/full/admission-25.jpg",
+      "width": 1080,
+      "height": 481,
+      "caption": { "en": "The 2025 admission notice", "bn": "২০২৫ শিক্ষাবর্ষের ভর্তি বিজ্ঞপ্তি" }
+    }
+  ]
+}

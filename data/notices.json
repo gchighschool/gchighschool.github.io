@@ -1,0 +1,117 @@
+{
+  "_note": "Notices for the site. Bilingual and structured — no Markdown. A body is an array of blocks: {\"type\":\"p\"|\"h\"|\"list\"} each carrying an \"en\" and a \"bn\" variant. Paragraph and list-item content is an array of runs: a plain string, or {\"b\":\"bold text\"}. Everything is rendered with textContent, so any character is safe to type here.",
+  "notices": [
+    {
+      "id": "3",
+      "date": "2025-08-20",
+      "pinned": true,
+      "category": { "en": "Admissions", "bn": "ভর্তি" },
+      "title": {
+        "en": "Admission test schedule — 2026 academic year",
+        "bn": "ভর্তি পরীক্ষার সময়সূচি — ২০২৬ শিক্ষাবর্ষ"
+      },
+      "summary": {
+        "en": "The entrance test for the 2026 session will be held on 10 December 2025. Forms are available from the school office.",
+        "bn": "২০২৬ শিক্ষাবর্ষের ভর্তি পরীক্ষা ১০ ডিসেম্বর ২০২৫ তারিখে অনুষ্ঠিত হবে। আবেদন ফরম বিদ্যালয় অফিস থেকে সংগ্রহ করা যাবে।"
+      },
+      "body": [
+        {
+          "type": "p",
+          "en": ["The admission test for the 2026 academic year will be held on ", { "b": "10 December 2025" }, ". Application forms may be collected from the school office."],
+          "bn": ["২০২৬ শিক্ষাবর্ষের ভর্তি পরীক্ষা আগামী ", { "b": "১০ ডিসেম্বর ২০২৫" }, " তারিখে অনুষ্ঠিত হবে। ভর্তির আবেদন ফরম বিদ্যালয়ের অফিস থেকে সংগ্রহ করা যাবে।"]
+        },
+        { "type": "h", "en": "Test details", "bn": "পরীক্ষার বিবরণ" },
+        {
+          "type": "list",
+          "en": [
+            [{ "b": "Time" }, ": 9:00 am"],
+            [{ "b": "Venue" }, ": Main building"],
+            [{ "b": "Application forms" }, ": School office"]
+          ],
+          "bn": [
+            [{ "b": "সময়" }, ": সকাল ৯:০০ টা"],
+            [{ "b": "স্থান" }, ": মূল ভবন"],
+            [{ "b": "আবেদন ফরম" }, ": বিদ্যালয় অফিস"]
+          ]
+        },
+        {
+          "type": "p",
+          "en": ["For any question about admission, please contact the school office."],
+          "bn": ["ভর্তি সংক্রান্ত যেকোনো তথ্যের জন্য বিদ্যালয় অফিসে যোগাযোগ করুন।"]
+        }
+      ]
+    },
+    {
+      "id": "1",
+      "date": "2025-08-30",
+      "pinned": false,
+      "category": { "en": "General", "bn": "সাধারণ" },
+      "title": {
+        "en": "School reopening announcement",
+        "bn": "বিদ্যালয় পুনরায় খোলার বিজ্ঞপ্তি"
+      },
+      "summary": {
+        "en": "Classes for the new academic year resume on 1 September 2025, beginning with an orientation at 8:00 am.",
+        "bn": "নতুন শিক্ষাবর্ষের পাঠদান শুরু হবে ১ সেপ্টেম্বর ২০২৫ তারিখে, সকাল ৮টার ওরিয়েন্টেশন কর্মসূচির মধ্য দিয়ে।"
+      },
+      "body": [
+        {
+          "type": "p",
+          "en": ["Teaching in all classes at Ghonar Chala High School will resume for the new academic year from ", { "b": "1 September 2025" }, ". Every student is asked to attend the orientation programme at 8:00 am."],
+          "bn": ["নতুন শিক্ষাবর্ষে ", { "b": "১ সেপ্টেম্বর ২০২৫" }, " তারিখ থেকে ঘোনার চালা উচ্চ বিদ্যালয়ের সকল শ্রেণির পাঠদান পুনরায় শুরু হবে। সকল শিক্ষার্থীকে সকাল ৮টায় অনুষ্ঠিতব্য ওরিয়েন্টেশন কর্মসূচিতে উপস্থিত থাকার জন্য অনুরোধ করা হলো।"]
+        },
+        { "type": "h", "en": "Details", "bn": "বিস্তারিত" },
+        {
+          "type": "list",
+          "en": [
+            [{ "b": "Venue" }, ": School auditorium"],
+            [{ "b": "Time" }, ": 8:00 am"],
+            [{ "b": "Dress" }, ": Prescribed school uniform"]
+          ],
+          "bn": [
+            [{ "b": "স্থান" }, ": বিদ্যালয় মিলনায়তন"],
+            [{ "b": "সময়" }, ": সকাল ৮:০০ টা"],
+            [{ "b": "পোশাক" }, ": বিদ্যালয়ের নির্ধারিত ইউনিফর্ম"]
+          ]
+        },
+        {
+          "type": "p",
+          "en": ["Guardians are particularly requested to make sure their children arrive on time."],
+          "bn": ["অভিভাবকদের সন্তানের সময়মতো উপস্থিতি নিশ্চিত করার জন্য বিশেষভাবে অনুরোধ করা হলো।"]
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "date": "2025-08-25",
+      "pinned": false,
+      "category": { "en": "General", "bn": "সাধারণ" },
+      "title": {
+        "en": "Annual sports day 2025",
+        "bn": "বার্ষিক ক্রীড়া প্রতিযোগিতা ২০২৫"
+      },
+      "summary": {
+        "en": "The annual sports competition takes place on the school field on 15 September 2025. All students are encouraged to enter.",
+        "bn": "১৫ সেপ্টেম্বর ২০২৫ তারিখে বিদ্যালয় মাঠে বার্ষিক ক্রীড়া প্রতিযোগিতা অনুষ্ঠিত হবে। সকল শিক্ষার্থীকে অংশগ্রহণের জন্য উৎসাহিত করা হচ্ছে।"
+      },
+      "body": [
+        {
+          "type": "p",
+          "en": ["The annual sports competition will be held on the school field on ", { "b": "15 September 2025" }, ". All students are encouraged to take part in the various events."],
+          "bn": ["আগামী ", { "b": "১৫ সেপ্টেম্বর ২০২৫" }, " তারিখে বিদ্যালয় মাঠে বার্ষিক ক্রীড়া প্রতিযোগিতা অনুষ্ঠিত হবে। সকল শিক্ষার্থীকে বিভিন্ন ইভেন্টে অংশগ্রহণের জন্য উৎসাহিত করা হচ্ছে।"]
+        },
+        { "type": "h", "en": "Events", "bn": "প্রতিযোগিতার ইভেন্টসমূহ" },
+        {
+          "type": "list",
+          "en": [["100 metre sprint"], ["Relay race"], ["Long jump"], ["High jump"]],
+          "bn": [["১০০ মিটার দৌড়"], ["রিলে দৌড়"], ["দীর্ঘ লম্ফ"], ["উচ্চ লম্ফ"]]
+        },
+        {
+          "type": "p",
+          "en": ["Students who wish to compete may register their names with their own class teacher."],
+          "bn": ["আগ্রহী শিক্ষার্থীরা নিজ নিজ শ্রেণিশিক্ষকের নিকট নাম নিবন্ধন করতে পারবে।"]
+        }
+      ]
+    }
+  ]
+}

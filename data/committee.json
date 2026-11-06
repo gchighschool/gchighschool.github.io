@@ -1,0 +1,19 @@
+{
+  "_note": "To add another committee member, append an object to the 'members' array below with the same shape as the existing entries: name / designation / subject / note are each a {\"en\": \"...\", \"bn\": \"...\"} pair, and 'photo' is either a path to an image (e.g. \"assets/img/committee/name.jpg\") or an empty string, which shows an initials avatar instead. 'subject' is not meaningful for committee members and can be left as empty strings.",
+  "members": [
+    {
+      "name": { "en": "Alhaj Amzad Hossen Master", "bn": "আলহাজ্ব আমজাদ হোসেন মাস্টার" },
+      "designation": { "en": "President, Managing Committee", "bn": "সভাপতি, পরিচালনা পর্ষদ" },
+      "subject": { "en": "", "bn": "" },
+      "note": { "en": "A former assistant headmaster of this school and former chairman of Kalia Union Parishad.", "bn": "ঘোনার চালা উচ্চ বিদ্যালয়ের সাবেক সহকারী প্রধান শিক্ষক এবং কালিয়া ইউনিয়ন পরিষদের সাবেক চেয়ারম্যান।" },
+      "photo": ""
+    },
+    {
+      "name": { "en": "Md. Nazrul Islam", "bn": "মোঃ নজরুল ইসলাম" },
+      "designation": { "en": "Member Secretary", "bn": "সদস্য সচিব" },
+      "subject": { "en": "", "bn": "" },
+      "note": { "en": "Headmaster, Ghonar Chala High School.", "bn": "প্রধান শিক্ষক, ঘোনার চালা উচ্চ বিদ্যালয়।" },
+      "photo": ""
+    }
+  ]
+}
