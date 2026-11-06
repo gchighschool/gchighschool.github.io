@@ -495,6 +495,8 @@ a.m-card:hover, .m-card-hover:hover {
   display: block;
 }
 .m-section-navy .m-stat-value { color: #fff; }
+/* Fraunces has no Bengali glyphs: without this the browser picks a random fallback font per device. */
+html[lang="bn"] .m-stat-value { font-family: var(--m-bangla); }
 .m-stat-label {
   font-size: .8rem;
   letter-spacing: .1em;
