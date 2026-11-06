@@ -322,6 +322,7 @@ def seo_head(site, rel, src, kind="website"):
 
 def json_ld(site, s):
     a = s["address"]
+    alt_names = [s["name"]["en"]] + list(s.get("alternateNames", []))
     return json.dumps({
         "@context": "https://schema.org",
         "@graph": [
@@ -329,7 +330,7 @@ def json_ld(site, s):
                 "@type": "HighSchool",
                 "@id": site + "/#school",
                 "name": s["name"]["bn"],
-                "alternateName": s["name"]["en"],
+                "alternateName": alt_names,
                 "description": s["description"]["bn"],
                 "url": site + "/",
                 "logo": site + "/assets/img/icon-512.png",
@@ -350,7 +351,7 @@ def json_ld(site, s):
                 "@id": site + "/#website",
                 "url": site + "/",
                 "name": s["name"]["bn"],
-                "alternateName": s["name"]["en"],
+                "alternateName": alt_names,
                 "inLanguage": ["bn", "en"],
                 "publisher": {"@id": site + "/#school"},
             },

@@ -960,3 +960,6 @@ html[lang="bn"] .m-footer-brand strong { font-family: var(--m-bangla); }
    the dictionary is applied, and a window-load fallback clears it even if
    site.js never runs. */
 html[data-lang-pending] [data-i18n] { visibility: hidden; }
+
+/* Shown only to Bangla readers; English readers already get this text from the dictionary. */
+html[lang="en"] [data-only-bn] { display: none; }

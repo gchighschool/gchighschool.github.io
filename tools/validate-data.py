@@ -122,6 +122,9 @@ def check_site(errors):
     for field in ("name", "description"):
         if not is_pair(data.get(field)):
             errors.append("site.json: \"%s\" needs both \"bn\" and \"en\"" % field)
+    alts = data.get("alternateNames", [])
+    if not isinstance(alts, list) or not all(isinstance(x, str) and x.strip() for x in alts):
+        errors.append("site.json: \"alternateNames\" must be a list of names")
     for field in ("eiin", "founded", "email"):
         if not data.get(field):
             errors.append("site.json: \"%s\" is missing" % field)
