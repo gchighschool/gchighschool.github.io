@@ -1,0 +1,21 @@
+{
+  "_note": "School facts used by tools/build.py for search engines (the JSON-LD block on the home page). The visible pages carry their own copy of these details in HTML. If a phone number or the address changes, update it in BOTH places.",
+  "name": { "bn": "ঘোনার চালা উচ্চ বিদ্যালয়", "en": "Ghonar Chala High School" },
+  "description": {
+    "bn": "ঘোনার চালা উচ্চ বিদ্যালয়, সখিপুর, টাঙ্গাইল — ১৯৮৫ সাল থেকে ষষ্ঠ থেকে দশম শ্রেণি পর্যন্ত বিজ্ঞান, ব্যবসায় শিক্ষা ও মানবিক বিভাগে পাঠদানরত একটি এমপিওভুক্ত মাধ্যমিক বিদ্যালয়।",
+    "en": "Ghonar Chala High School, Sakhipur, Tangail — an MPO-listed secondary school teaching classes six to ten in Science, Business Studies and Humanities since 1985."
+  },
+  "eiin": "114612",
+  "founded": "1985-01-10",
+  "address": {
+    "street": "Ghonar Chala Bazar, Kachua",
+    "locality": "Sakhipur",
+    "region": "Tangail",
+    "postalCode": "1951",
+    "country": "BD"
+  },
+  "geo": { "latitude": 24.368489, "longitude": 90.196044 },
+  "phones": ["+8801309114612", "+8801966824398"],
+  "email": "ghonarchalahighschool@gmail.com",
+  "sameAs": ["https://facebook.com/ghonarchalahighschoolofficial/"]
+}

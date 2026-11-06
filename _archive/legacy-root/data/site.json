@@ -1,0 +1,27 @@
+{
+  "name": {
+    "bn": "ঘোনার চালা উচ্চ বিদ্যালয়",
+    "en": "Ghonar Chala High School"
+  },
+  "eiin": "114612",
+  "board": "মাধ্যমিক ও উচ্চ মাধ্যমিক শিক্ষা বোর্ড, ঢাকা",
+  "established": "1985-01-10",
+  "recognized": "1988-01-01",
+  "address": {
+    "bn": "ঘোনার চালা বাজার, কাচুয়া, সখিপুর, টাঙ্গাইল-১৯৫১",
+    "en": "Ghonar Chala Bazar, Kachua, Sakhipur, Tangail-1951"
+  },
+  "phones": [
+    { "label": "অফিস", "display": "01309-114612", "tel": "+8801309114612" },
+    { "label": "মোবাইল", "display": "01966-824398", "tel": "+8801966824398" }
+  ],
+  "email": "ghonarchalahighschool@gmail.com",
+  "facebook": "https://facebook.com/ghonarchalahighschoolofficial/",
+  "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3634.3682702282426!2d90.19604380955415!3d24.368489078163012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x375611bb216872b7%3A0x4fb1b2e9e3c037ab!2sGhonar%20Chala%20High%20School!5e0!3m2!1sen!2sbd!4v1756655525553!5m2!1sen!2sbd",
+  "stats": [
+    { "label": "প্রতিষ্ঠিত", "value": "1985", "icon": "bi-calendar-event" },
+    { "label": "EIIN", "value": "114612", "icon": "bi-hash" },
+    { "label": "শিক্ষা বোর্ড", "value": "ঢাকা", "icon": "bi-award", "raw": true },
+    { "label": "শাখা", "value": "3", "icon": "bi-mortarboard" }
+  ]
+}

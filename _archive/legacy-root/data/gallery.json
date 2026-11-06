@@ -1,0 +1,30 @@
+{
+  "note": "নতুন ছবি যুক্ত করতে: images/ ফোল্ডারে মূল ছবি রাখুন, তারপর `bash tools/make-images.sh` চালিয়ে thumb ও full সংস্করণ তৈরি করুন এবং নিচের তালিকায় এন্ট্রি যোগ করুন।",
+  "photos": [
+    {
+      "thumb": "assets/img/gallery/thumb/slider-1.webp",
+      "src": "assets/img/gallery/full/slider-1.jpg",
+      "caption": "বিদ্যালয়ের মূল ভবন"
+    },
+    {
+      "thumb": "assets/img/gallery/thumb/slider-2.webp",
+      "src": "assets/img/gallery/full/slider-2.jpg",
+      "caption": "এসএসসি কৃতি শিক্ষার্থী সংবর্ধনা"
+    },
+    {
+      "thumb": "assets/img/gallery/thumb/slider-3.webp",
+      "src": "assets/img/gallery/full/slider-3.jpg",
+      "caption": "প্রাত্যহিক সমাবেশে শিক্ষার্থীরা"
+    },
+    {
+      "thumb": "assets/img/gallery/thumb/slider-4.webp",
+      "src": "assets/img/gallery/full/slider-4.jpg",
+      "caption": "বিদ্যালয় প্রাঙ্গণে শিক্ষার্থীদের সমাবেশ"
+    },
+    {
+      "thumb": "assets/img/gallery/thumb/admission-25.webp",
+      "src": "assets/img/gallery/full/admission-25.jpg",
+      "caption": "২০২৫ শিক্ষাবর্ষের ভর্তি বিজ্ঞপ্তি"
+    }
+  ]
+}
